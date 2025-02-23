@@ -6,7 +6,7 @@ import { Projects } from "@/ui/Projects";
 function home() {
   return (
     <>
-      <title>Muhammad Ranju Official Portfolio Website</title>
+      <title>Sahda Samier Official Portfolio Website</title>
       <HeroSection />
       <FeatureThree />
       <Projects />

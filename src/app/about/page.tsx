@@ -38,7 +38,7 @@ export const metadata: Metadata = {
       },
     ],
     card: "summary_large_image",
-    site: "@muhammad_ranju",
+    site: "@sahda_samier",
   },
 };
 

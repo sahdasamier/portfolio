@@ -46,7 +46,7 @@ This is a provisional README file for the `mdranju-portfolio-nextjs` project. Th
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/muhammadranju/mdranju-portfolio-nextjs
+   git clone https://github.com/Sahdasamier/mdranju-portfolio-nextjs
    ```
 2. Navigate to the project directory:
    ```bash

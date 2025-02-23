@@ -55,7 +55,7 @@ function HeroSection() {
             <h1 className="mt-3 max-w-4xl text-3xl  font-extrabold tracking-tight md:text-4xl lg:text-6xl flex">
               <span className="mr-3 font-medium">I'm</span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
-                Muhammad Ranju
+                Sahda Samier
               </span>
             </h1>
             <h2 className="mt-6 font-bold lg:text-2xl md:text-xl sm:text-lg flex flex-row items-center">
@@ -82,14 +82,14 @@ function HeroSection() {
               React.js and other related technologies. */}
             <div className="flex gap-5 mt-5 border-white border-collapse rounded">
               <a
-                href="https://github.com/muhammadranju"
+                href="https://github.com/Sahdasamier"
                 aria-label="GitHub Icon"
                 target="_blank"
               >
                 <FaGithub className="h-7 w-7" />
               </a>
               <a
-                href="https://www.linkedin.com/in/muhammadranju"
+                href="https://www.linkedin.com/in/Sahdasamier"
                 target="_blank"
                 aria-label="Linkedin Icon"
               >

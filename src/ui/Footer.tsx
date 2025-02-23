@@ -68,13 +68,13 @@ c25 -5 62 -24 83 -40 l38 -31 122 32 c156 41 364 52 492 26 205 -42 374 -172
           <p>
             © {year}
             <a
-              href="https://github.com/muhammadranju"
+              href="https://github.com/Sahdasamier"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Muhammad Ranju Github Profile"
+              aria-label="Sahda Samier Github Profile"
             >
               <span className="font-bold text-indigo-500 hover:underline ml-1 mr-1">
-                Muhammad Ranju.
+                Sahda Samier.
               </span>
             </a>
             All rights reserved.
@@ -82,10 +82,10 @@ c25 -5 62 -24 83 -40 l38 -31 122 32 c156 41 364 52 492 26 205 -42 374 -172
 
           <strong>
             <a
-              href="../../muhammadranju.apk"
+              href="../../Sahdasamier.apk"
               target="_blank"
               className="hover:underline underline-offset-4 ml-1 font-bold	"
-              download="muhammadranju.apk"
+              download="Sahdasamier.apk"
             >
               Download App
               <i className="fa-solid fa-download ml-2"></i>
