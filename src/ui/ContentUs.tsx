@@ -1,5 +1,5 @@
 import BoxReveal from "@/components/ui/box-reveal";
-import Ranju from "../../public/mdranju.jpg";
+import Sia from "../../public/sia.jpg";
 import ShinyButton from "@/components/ui/shiny-button";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,8 +24,8 @@ export const ContentUs = () => {
           height={500}
           className="object-cover z-50 overflow-hidden w-full h-56 rounded-xl shadow-lg lg:shadow-none md:h-96 lg:h-full"
           placeholder="blur"
-          src={Ranju}
-          alt="Md Ranju Images"
+          src={Sia}
+          alt="Sia Images"
         />
       </div>
 
@@ -40,11 +40,11 @@ export const ContentUs = () => {
             Hi, I'm{" "}
             <span className="text-xl font-bold md:text-2xl text-indigo-500">
               {" "}
-              Md. Ranju
+              Sahda Samier
             </span>
-            , a passionate Web Application Developer from Rajshahi, Bangladesh.
+            , a passionate Web Application Developer from Egypt.
             I began my journey into web development in 2021, the same year I
-            completed my Higher Secondary Certificate (HSC). Currently, I am
+            completed my Bachelors in Business Informatics. Currently, I am
             pursuing further studies at Degree College while continuing to
             enhance my skills in both front-end and back-end technologies.
             <br />
@@ -52,7 +52,7 @@ export const ContentUs = () => {
             Application Development, enabling me to build dynamic, responsive
             websites and applications from the ground up. My skill set spans
             various programming languages and frameworks, including HTML, CSS,
-            JavaScript, Node.js, React.js, Next.js, MongoDB and more. I am
+            JavaScript,typescript, Node.js, React.js, Next.js, MongoDB and more. I am
             committed to delivering efficient, high-quality solutions that meet
             the needs of clients and users alike.
           </p>

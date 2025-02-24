@@ -89,7 +89,7 @@ function HeroSection() {
                 <FaGithub className="h-7 w-7" />
               </a>
               <a
-                href="https://www.linkedin.com/in/Sahdasamier"
+                href="https://www.linkedin.com/in/sahda-samier/"
                 target="_blank"
                 aria-label="Linkedin Icon"
               >
@@ -108,7 +108,7 @@ function HeroSection() {
                 <a
                   href="../../full_stack_developer_resume.pdf"
                   target="_blank"
-                  download="full_stack_developer_resume_of_mdranju.pdf"
+                  download="full_stack_developer_resume_of_Sahdasamier.pdf"
                 >
                   <ShimmerButton className="shadow-2xl">
                     <span className="whitespace-pre-wrap flex items-center text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-base">
