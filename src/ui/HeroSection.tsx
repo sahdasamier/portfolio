@@ -6,11 +6,10 @@ import {
   FaLinkedin,
   FaNode,
   FaReact,
-  FaXTwitter,
 } from "react-icons/fa6";
 import { RiJavascriptFill } from "react-icons/ri";
 import { SiExpress, SiNextdotjs, SiTailwindcss } from "react-icons/si";
-import heroImage from "../../public/hero-image.jpeg";
+import princessImage from "../../public/princessImage.jpeg";
 
 import { FlipWords } from "@/components/ui/flip-words";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
@@ -59,17 +58,15 @@ function HeroSection() {
               </span>
             </h1>
             <h2 className="mt-6 font-bold lg:text-2xl md:text-xl sm:text-lg flex flex-row items-center">
-              <span className="">I am a Web App Developer in</span>
+              <span className="">I am a Web Developer in</span>
               <div className="text-slate-900">
                 <FlipWords words={words} />
               </div>
             </h2>
             <p className="mt-5  text-base font-medium lg:w-4/5">
-              Welcome to my portfolio! I hope you enjoy your visit. I specialize
-              in Back-End development with Node.js and Front-End development
-              with React.js. I have worked on various projects, including a Real{" "}
-              <span className="text-indigo-600">Link-Shortener</span>,
-              E-Commerce APIs,{" "}
+              Welcome to my portfolio! I hope you enjoy your visit. I specialize  
+              Front-End development with React.js
+             and in Back-End development with Node.js . I have worked on various projects, including a Real{" "}
               <span className="text-indigo-600">React-based</span> Website
               Design and Development, and more.
               <br />I am passionate about learning new technologies and building
@@ -95,20 +92,14 @@ function HeroSection() {
               >
                 <FaLinkedin className="h-7 w-7" />
               </a>
-              <a
-                href="https://twitter.com/muhammad_ranju"
-                aria-label="Twitter Icon"
-                target="_blank"
-              >
-                <FaXTwitter className="h-7 w-7" />
-              </a>
+          
             </div>
             <div className="mt-5">
               <div className="flex mt-5 gap-x-2 border-white border-collapse rounded">
                 <a
-                  href="../../full_stack_developer_resume.pdf"
+                  href="../../public/SahdaSamier_front-end developer.pdf"
                   target="_blank"
-                  download="full_stack_developer_resume_of_Sahdasamier.pdf"
+                  download="front_end-developer_resume_of_SahdaSamier.pdf"
                 >
                   <ShimmerButton className="shadow-2xl">
                     <span className="whitespace-pre-wrap flex items-center text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-base">
@@ -164,8 +155,8 @@ function HeroSection() {
           <Image
             placeholder="blur"
             className="rounded-lg"
-            src={heroImage}
-            alt="Hero Image"
+            src={princessImage}
+            alt="princess Image"
           />
         </div>
       </div>
