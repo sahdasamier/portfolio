@@ -18,10 +18,10 @@ const menuItems = [
     name: "Projects",
     href: "/projects",
   },
-  // {
-  //   name: "Experience",
-  //   href: "/experience",
-  // },
+  {
+    name: "Experience",
+    href: "/experience",
+  },
   {
     name: "About",
     href: "/about",
@@ -30,10 +30,7 @@ const menuItems = [
     name: "Contact",
     href: "/contact",
   },
-  // {
-  //   name: "Login",
-  //   href: "/api/auth/login",
-  // },
+  
 ];
 
 function Navbar() {
