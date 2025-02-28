@@ -5,7 +5,7 @@ import { URL } from "@/api/cron/route";
 import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
 import { AnimatedSubscribeButton } from "@/components/ui/animated-subscribe-button";
 import { Button } from "@/components/ui/moving-border";
-
+import  contactme from "../../../public/contactme.png";
 import { cn } from "@/lib/utils";
 import { CheckIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
@@ -106,10 +106,7 @@ function Contact() {
               Love to hear from you
             </p>
             <p className="mx-auto max-w-4xl text-center text-base  md:text-xl columns-1">
-              I think it's great that you're open to hearing from others!
-              Sharing thoughts fosters connection and creativity. Whether it's a
-              deep insight, casual chat, or random idea, communication builds
-              understanding.
+            My inbox is always open. Whether you have a new opportunity, a question or just want to say hi, I’ll try my best to get back to you!
             </p>
           </div>
           <div className="mx-auto max-w-7xl">
@@ -121,165 +118,20 @@ function Contact() {
                     Get in touch
                   </p>
 
-                  <p className="mt-4 text-lg ">
-                    Our friendly team would love to hear from you.
-                  </p>
+                 
                   <div className="space-y-2 mt-3">
                     <div className="flex text-sm font-medium leading-none  peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                      <MdEmail className="mr-2" /> Email: mdranju23@gmail.com
+                      <MdEmail className="mr-2" /> Email: sahdasamier013@gmail.com
                     </div>
                     <div className="flex text-sm font-medium leading-none  peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       <FaPhone className="mr-2" />
-                      Number: +8801799301290
+                      Number: +201147299675
                     </div>
                     <div className="flex text-sm font-medium leading-none  peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       <FaLocationDot className="mr-2" />
-                      Location: Rajshahi, Bangladesh
+                      Location: Aswan ,Egypt
                     </div>
                   </div>
-                  <form
-                    action=""
-                    onSubmit={handleSubmit}
-                    className="mt-8 space-y-4 rounded-xl  border p-6 pb-5 dark:bg-slate-900 bg-slate-100"
-                  >
-                    <div className="grid w-full gap-y-4 md:gap-x-4 lg:grid-cols-2">
-                      <div className="grid w-full  items-center gap-1.5">
-                        <label
-                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                          htmlFor="first_name"
-                        >
-                          First Name
-                          <span className="text-xs text-red-500">*</span>
-                        </label>
-                        <input
-                          className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                          type="text"
-                          id="first_name"
-                          name="firstName"
-                          placeholder="First Name"
-                          value={formData.firstName}
-                          onChange={handleInputChange}
-                        />
-                        <span className="text-xs text-red-500">
-                          {error.includes("First Name")
-                            ? "First Name is required!"
-                            : ""}
-                        </span>
-                      </div>
-                      <div className="grid w-full  items-center gap-1.5">
-                        <label
-                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                          htmlFor="last_name"
-                        >
-                          Last Name
-                          <span className="text-xs text-red-500">*</span>{" "}
-                        </label>
-                        <input
-                          className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                          type="text"
-                          id="last_name"
-                          placeholder="Last Name"
-                          name="lastName"
-                          value={formData.lastName}
-                          onChange={handleInputChange}
-                        />
-                        <span className="text-xs text-red-500">
-                          {error.includes("Last Name")
-                            ? "Last Name is required!"
-                            : ""}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="grid w-full  items-center gap-1.5">
-                      <label
-                        className="text-sm font-medium leading-none  peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="email"
-                      >
-                        Email<span className="text-xs text-red-500">*</span>
-                      </label>
-                      <input
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                        type="text"
-                        id="email"
-                        placeholder="Email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                      />
-                      <span className="text-xs text-red-500">
-                        {error.includes("Email") ? "Email is required!" : ""}
-                      </span>
-                    </div>
-                    <div className="grid w-full  items-center gap-1.5">
-                      <label
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="phone_number"
-                      >
-                        Phone number
-                        <span className="text-xs text-red-500">*</span>
-                      </label>
-                      <input
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                        type="number"
-                        id="phone_number"
-                        name="phone"
-                        onChange={handleInputChange}
-                        value={formData.phone}
-                        placeholder="Phone number"
-                      />
-                      <span className="text-xs text-red-500">
-                        {error.includes("Phone number")
-                          ? "Phone number is required!"
-                          : ""}
-                      </span>
-                    </div>
-                    <div className="grid w-full  items-center gap-1.5">
-                      <label
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="message"
-                      >
-                        Message<span className="text-xs text-red-500">*</span>
-                      </label>
-                      <textarea
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                        id="message"
-                        placeholder="Leave us a message"
-                        cols={20}
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                      />
-                      <span className="text-xs text-red-500">
-                        {error.includes("Message")
-                          ? "Message is required!"
-                          : ""}
-                      </span>
-                    </div>
-                    <button
-                      type="submit"
-                      ref={buttonRef}
-                      className=" btn w-full rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                    >
-                      Send Message
-                    </button>
-                    {/* <AnimatedSubscribeButton
-                      buttonColor="#6366f1 "
-                      buttonTextColor="#ffffff"
-                      subscribeStatus={false}
-                      initialText={
-                        <span className="group inline-flex items-center">
-                          Send Message{" "}
-                          <ChevronRightIcon className="ml-1 size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </span>
-                      }
-                      changeText={
-                        <span className="group inline-flex items-center">
-                          <CheckIcon className="mr-2 size-4" />
-                          {error ? "Message Sent Failed!" : "Message Sended"}
-                        </span>
-                      }
-                    /> */}
-                  </form>
                 </div>
               </div>
               <Image
@@ -289,7 +141,8 @@ function Contact() {
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                 className="hidden w-full rounded-lg object-cover drop-shadow-xl lg:block"
-                src="./Mention-bro.svg"
+                src={contactme}
+            
               />
             </div>
           </div>

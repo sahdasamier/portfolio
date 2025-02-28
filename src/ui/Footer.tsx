@@ -80,17 +80,7 @@ c25 -5 62 -24 83 -40 l38 -31 122 32 c156 41 364 52 492 26 205 -42 374 -172
             All rights reserved.
           </p>
 
-          <strong>
-            <a
-              href="../../Sahdasamier.apk"
-              target="_blank"
-              className="hover:underline underline-offset-4 ml-1 font-bold	"
-              download="Sahdasamier.apk"
-            >
-              Download App
-              <i className="fa-solid fa-download ml-2"></i>
-            </a>
-          </strong>
+         
         </div>
       </div>
     </footer>
