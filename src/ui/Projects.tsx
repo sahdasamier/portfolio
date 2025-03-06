@@ -1,5 +1,5 @@
 "use client";
-import getProject from "@/api/cron/route";
+import getProject from "@/api/getProjects";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import Image from "next/image";
@@ -13,7 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export function Projects() {
   const { data, isLoading, isError, error, isFetched } = useQuery({
-    queryKey: ["project"],
+    queryKey: ["projects"],
     queryFn: async () => {
       return await getProject();
     },
@@ -71,24 +71,23 @@ export function Projects() {
                   alt={post?.title}
                 />
                 <div className="min-h-min p-3">
-                  <p className="mt-4 w-full text-xs font-semibold leading-tight">
-                    #{post?.category.toLocaleLowerCase()}
-                  </p>
+                #{post.category?.toLocaleLowerCase() || "uncategorized"}
+
                   <p
                     className="mt-4 flex-1 text-base font-semibold"
                     title={post?.title}
                   >
-                    {post?.title.length > 40
-                      ? post?.title.substring(0, 30).concat("...")
-                      : post?.title}
-                  </p>
+                    {post.title?.length > 40
+                          ? post.title.substring(0, 38).concat("...")
+                          : post.title || "Untitled Project"}
+                      </p>
                   <p
                     className="mt-2 w-full text-sm leading-normal"
                     title={post?.details}
                   >
-                    {post?.details.length > 150
-                      ? post?.details.substring(0, 80).concat("...")
-                      : post?.details}
+                    {post.details?.length > 150
+                          ? post.details.substring(0, 150).concat("...")
+                          : post.details || "No description"}
                   </p>
                 </div>
                 {/* Button Container */}
@@ -129,7 +128,7 @@ export function Projects() {
                   )}
                   <div>
                     <Link
-                      href={`/project/${post?._id}`}
+                      href={`/project/${post.id}`}
                       className="flex gap-x-1 items-center"
                     >
                       {/* <button className="flex gap-x-1 items-center rounded-lg shadow-md px-3 py-2.5 text-sm font-semibold bg-slate-800 text-white hover:bg-slate-700"> */}
