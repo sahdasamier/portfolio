@@ -61,11 +61,23 @@ function Navbar() {
       <div className="relative w-full">
         <div className="bg-background text-foreground" />
         <div className="mx-auto flex container items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-          <Link href="/">
-            <div className="inline-flex items-center space-x-0 mt-3">
-              <span className="font-bold text-2xl bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500 bg-clip-text text-transparent tracking-tight">
-                Sia
-              </span>
+          <Link href="/" className="flex items-center gap-2">
+            <div className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" className="w-12 h-12">
+                <path d="M70 50 L50 75 L70 100" stroke="#3498db" strokeWidth="6" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M230 50 L250 75 L230 100" stroke="#3498db" strokeWidth="6" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                
+                <text x="150" y="85" fontFamily="monospace" fontSize="68" fontWeight="bold" textAnchor="middle" fill="currentColor">sia</text>
+                
+                <rect x="190" y="65" width="4" height="30" fill="currentColor">
+                  <animate attributeName="opacity" values="1;0;1" dur="1.5s" repeatCount="indefinite" />
+                </rect>
+                
+                <text x="110" y="40" fontFamily="monospace" fontSize="12" fill="currentColor">01110011</text>
+                <text x="180" y="40" fontFamily="monospace" fontSize="12" fill="currentColor">01101001</text>
+                <text x="145" y="120" fontFamily="monospace" fontSize="12" fill="currentColor">01100001</text>
+              </svg>
+              
             </div>
           </Link>
           <div className="hidden grow items-start lg:flex md:flex md:flex-grow flex-row justify-end space-x-1">
