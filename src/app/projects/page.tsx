@@ -17,8 +17,7 @@ export const metadata: Metadata = {
       "This is my portfolio page. I have a lot of projects that I have worked on. You can find them here. I hope you enjoy your visit.",
     images: [
       {
-        url: metaData.image,
-
+        url: metaData.imageOfSia,
         alt: "Projects Page",
       },
     ],
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
       "This is my portfolio page. I have a lot of projects that I have worked on. You can find them here. I hope you enjoy your visit.",
     images: [
       {
-        url: metaData.image,
+        url: metaData.imageOfSia,
 
         alt: "Projects Page",
       },

@@ -26,8 +26,7 @@ export const metadata: Metadata = {
     description: metaData.description,
     images: [
       {
-        url: metaData.image,
-
+        url: metaData.imageOfSia,
         alt: metaData.title,
       },
     ],
@@ -40,8 +39,7 @@ export const metadata: Metadata = {
     description: metaData.description,
     images: [
       {
-        url: metaData.image,
-
+        url: metaData.imageOfSia,
         alt: metaData.title,
       },
     ],
