@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-Image-element */
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import { Badge } from "@radix-ui/themes";

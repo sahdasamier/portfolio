@@ -41,7 +41,7 @@ const projects = [
     title: "Linked trust",
     image: "/Trustclaim.png",
     details: "As the lead developer, I spearheaded the creation of a decentralized platform. Users express opinions through claims, and others can support or challenge them within interconnected nodes or chains. This innovative structure fosters collaborative discourse as circles diverge from the main one based on evolving claims, creating a dynamic and decentralized space for expression and discussion.",
-    liveLink: "https://live.linkedtrust.us/feed",
+    liveLink: "https://linkedtrust.us",
     author: "Sahda Samier Ahmed",
     sourceCode: "https://github.com/Whats-Cookin/trust_claim",
     avatar: "/sia.jpg",

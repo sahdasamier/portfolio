@@ -8,7 +8,7 @@ export default function NotFound() {
       <div className="text-center p-8">
         <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
         <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
-          The project you're looking for doesn't exist or has been removed.
+          The project you&apos;re looking for doesn&apos;t exist or has been removed.
         </p>
         <Link href="/projects">
           <HoverBorderGradient
