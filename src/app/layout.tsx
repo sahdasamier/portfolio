@@ -4,8 +4,6 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/ui/Navbar";
 import Footer from "@/ui/Footer";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import metaData from "@/data/metadata.json";
 import { ToastContainer } from "react-toastify";
@@ -36,7 +34,6 @@ export const metadata: Metadata = {
 
     siteName: metaData.title,
     type: "website",
-    url: "https://mdranju.xyz",
   },
   twitter: {
     title: metaData.title,

@@ -1,5 +1,5 @@
 "use client";
-import getProject from "@/api/getProjects";
+import { getProjects } from "@/api/getProjects";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import Image from "next/image";
@@ -14,9 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 export function Projects() {
   const { data, isLoading, isError, error, isFetched } = useQuery({
     queryKey: ["projects"],
-    queryFn: async () => {
-      return await getProject();
-    },
+    queryFn: getProjects,
     staleTime: 60000,
   });
 
@@ -58,7 +56,7 @@ export function Projects() {
           <div className="grid gap-6 py-6 md:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl mx-auto">
             {post?.map((post: any) => (
               <div
-                key={post?.title}
+                key={post?.id}
                 className="group relative border rounded-xl dark:bg-slate-900 bg-slate-100 shadow-md"
               >
                 <Image

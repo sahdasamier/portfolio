@@ -1,7 +1,7 @@
 import { db } from "@/firebase/config";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 
-async function getProject() {
+export async function getProjects() {
   try {
     // Reference to the "projects" collection in Firestore
     const projectsCollection = collection(db, "projects");
@@ -11,8 +11,8 @@ async function getProject() {
     
     // Map documents to an array of project objects
     const projects = snapshot.docs.map((doc) => ({
-      id: doc.id, // Include the document ID
-      ...doc.data(), // Spread the document data
+      id: doc.id,
+      ...doc.data(),
       createdAt: doc.data().createdAt?.toDate() || new Date()
     }));
     
@@ -23,4 +23,25 @@ async function getProject() {
   }
 }
 
-export default getProject;
+export async function getProject(id: string) {
+  try {
+    const projectRef = doc(db, "projects", id);
+    const projectSnap = await getDoc(projectRef);
+    
+    if (!projectSnap.exists()) {
+      throw new Error("Project not found");
+    }
+
+    const projectData = projectSnap.data();
+    return {
+      id: projectSnap.id,
+      ...projectData,
+      createdAt: projectData.createdAt?.toDate() || new Date()
+    };
+  } catch (error) {
+    console.error("Error fetching project from Firestore:", error);
+    throw error;
+  }
+}
+
+export default getProjects;

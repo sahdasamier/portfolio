@@ -1,5 +1,5 @@
 "use client";
-import getProjects from "@/api/getProjects"; // Import your Firebase function
+import { getProjects } from "@/api/getProjects";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
@@ -53,7 +53,7 @@ const ProjectsTable = () => {
 
             return (
               <tr
-                key={project.id} // Use Firebase document ID
+                key={project.id}
                 className="odd:bg-white odd:dark:bg-slate-900 even:bg-slate-50 even:dark:bg-slate-900/50 border-b dark:border-slate-700 border-slate-200"
               >
                 <th
@@ -61,7 +61,7 @@ const ProjectsTable = () => {
                   className="px-6 py-4 font-medium text-slate-900 whitespace-nowrap dark:text-white"
                 >
                   <Image
-                    src={project.image || "/default-project.png"} // Fallback for missing image
+                    src={project.image || "/default-project.png"}
                     className="w-10 h-10 rounded-md"
                     width={50}
                     height={50}
@@ -95,7 +95,7 @@ const ProjectsTable = () => {
                 </td>
                 <td className="px-6 py-4">
                   <a
-                    href={`/project/${project.id}`} // Link to project details
+                    href={`/project/${project.id}`}
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   >
                     View
