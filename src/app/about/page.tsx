@@ -24,7 +24,6 @@ export const metadata: Metadata = {
 
     siteName: "About Page",
     type: "website",
-    url: "https://mdranju.xyz/about",
   },
   twitter: {
     title: "About Page",
