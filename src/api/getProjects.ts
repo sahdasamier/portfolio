@@ -1,7 +1,20 @@
 import { db } from "@/firebase/config";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 
-export async function getProjects() {
+export interface Project {
+  id: string;
+  title: string;
+  details: string;
+  category: string;
+  author: string;
+  avatar: string;
+  createdAt: string;
+  sourceCode: string;
+  liveLink: string;
+  image: string;
+}
+
+export async function getProjects(): Promise<{ project: Project[] }> {
   try {
     // Reference to the "projects" collection in Firestore
     const projectsCollection = collection(db, "projects");
@@ -10,11 +23,21 @@ export async function getProjects() {
     const snapshot = await getDocs(projectsCollection);
     
     // Map documents to an array of project objects
-    const projects = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-      createdAt: doc.data().createdAt || new Date().toISOString()
-    }));
+    const projects = snapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        title: data.title || "",
+        details: data.details || "",
+        category: data.category || "",
+        author: data.author || "",
+        avatar: data.avatar || "",
+        createdAt: data.createdAt || new Date().toISOString(),
+        sourceCode: data.sourceCode || "",
+        liveLink: data.liveLink || "",
+        image: data.image || "",
+      } as Project;
+    });
     
     return { project: projects };
   } catch (error) {
@@ -23,20 +46,27 @@ export async function getProjects() {
   }
 }
 
-export async function getProject(id: string) {
+export async function getProject(id: string): Promise<Project | null> {
   try {
     const projectRef = doc(db, "projects", id);
     const projectSnap = await getDoc(projectRef);
     
     if (!projectSnap.exists()) {
-      throw new Error("Project not found");
+      return null;
     }
 
-    const projectData = projectSnap.data();
+    const data = projectSnap.data();
     return {
       id: projectSnap.id,
-      ...projectData,
-      createdAt: projectData.createdAt || new Date().toISOString()
+      title: data.title || "",
+      details: data.details || "",
+      category: data.category || "",
+      author: data.author || "",
+      avatar: data.avatar || "",
+      createdAt: data.createdAt || new Date().toISOString(),
+      sourceCode: data.sourceCode || "",
+      liveLink: data.liveLink || "",
+      image: data.image || "",
     };
   } catch (error) {
     console.error("Error fetching project from Firestore:", error);

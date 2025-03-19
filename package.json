@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "node --loader ts-node/esm scripts/migrateToFirebase.ts"
+    "migrate": "node -r dotenv/config --loader ts-node/esm scripts/migrateToFirebase.ts"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -36,8 +36,10 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "dotenv": "^16.4.7",
     "embla-carousel-react": "^8.0.0-rc19",
     "firebase": "^11.4.0",
+    "firebase-admin": "^13.2.0",
     "framer-motion": "^11.18.2",
     "lucide-react": "^0.312.0",
     "motion": "^11.18.2",
