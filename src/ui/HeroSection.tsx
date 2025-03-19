@@ -97,9 +97,9 @@ function HeroSection() {
             <div className="mt-5">
               <div className="flex mt-5 gap-x-2 border-white border-collapse rounded">
                 <a
-                  href="../../public/SahdaSamier_front-end developer.pdf"
-                  target="_blank"
-                  download="front_end-developer_resume_of_SahdaSamier.pdf"
+                  href="/SahdaSamier_front-end developer.pdf"
+                  download="SahdaSamier_front-end_developer_resume.pdf"
+                  className="inline-block"
                 >
                   <ShimmerButton className="shadow-2xl">
                     <span className="whitespace-pre-wrap flex items-center text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-base">
