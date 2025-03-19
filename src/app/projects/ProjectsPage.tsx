@@ -27,6 +27,24 @@ function Project() {
     return <div>Error: {(error as Error).message}</div>;
   }
 
+  // Sort projects based on title to match migration file order
+  const projectOrder = [
+    "What's Cookin'",
+    "Linked trust",
+    "Magdi Yacoub Heart Foundation",
+    "Decentralized_linkedin",
+    "Tic Tac Toe",
+    "In Symphony",
+    "Task Canvas: Your Daily Masterpiece",
+    "Quill Quotient"
+  ];
+
+  const sortedProjects = data?.project?.sort((a: any, b: any) => {
+    const indexA = projectOrder.indexOf(a.title);
+    const indexB = projectOrder.indexOf(b.title);
+    return indexA - indexB;
+  });
+
   return (
     <div className="relative overflow-hidden bg-slate-100 dark:bg-[#020617] py-20">
       <ScrollProgress className="top-[0px]" />
@@ -40,7 +58,7 @@ function Project() {
           <p className="lg:max-w-4xl text-base md:text-xl mt-8 mb-2">
             Here is some kind of{" "}
             <NumberTicker
-              value={data?.project?.length || 0}
+              value={sortedProjects?.length || 0}
               className="whitespace-pre-wrap text-base md:text-xl font-medium tracking-tighter text-black dark:text-white"
             />{" "}
             project&apos;s I have finished.
@@ -61,8 +79,8 @@ function Project() {
         )}
         {!isLoading && (
           <div className="grid gap-6 gap-y-6 py-6 md:grid-cols-2 rounded-xl lg:grid-cols-3">
-            {Array.isArray(data?.project) &&
-              data?.project.map((post: any) => {
+            {Array.isArray(sortedProjects) &&
+              sortedProjects.map((post: any) => {
                 // Add validation here
                 if (!post.id || !post.title) {
                   console.error('Invalid project data:', post);
@@ -76,7 +94,7 @@ function Project() {
                 >
                   <div className="border h-full group rounded-xl shadow-xl dark:bg-slate-900 bg-slate-100">
                     <Image
-                      src={post.image || "/default-project.png"} // Fallback for missing image
+                      src={(post.image ? (post.image.startsWith('/') ? post.image : `/${post.image}`) : "/default-project.png")}
                       className="aspect-video w-full rounded-t-xl"
                       width={500}
                       height={500}

@@ -49,10 +49,10 @@ export default function ProjectPage({ project }: ProjectPageProps) {
       {/* Project Image */}
       <div className="bg-blue-100 w-full h-full rounded-lg drop-shadow-md overflow-hidden">
         <Image
-          src={project.image}
+          src={(project.image ? (project.image.startsWith('/') ? project.image : `/${project.image}`) : "/default-project.png")}
           width={1080}
           height={720}
-          alt={project.title}
+          alt={project.title || "Project image"}
           className="w-full object-cover"
           priority
         />

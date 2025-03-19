@@ -22,7 +22,25 @@ export function Projects() {
     return <div>{String(error)}</div>;
   }
 
-  const post = data?.project?.slice(0, 6);
+  // Sort projects based on title to match migration file order
+  const projectOrder = [
+    "What's Cookin'",
+    "Linked trust",
+    "Magdi Yacoub Heart Foundation",
+    "Decentralized_linkedin",
+    "Tic Tac Toe",
+    "In Symphony",
+    "Task Canvas: Your Daily Masterpiece",
+    "Quill Quotient"
+  ];
+
+  const sortedProjects = data?.project?.sort((a: any, b: any) => {
+    const indexA = projectOrder.indexOf(a.title);
+    const indexB = projectOrder.indexOf(b.title);
+    return indexA - indexB;
+  });
+
+  const post = sortedProjects?.slice(0, 6);
   return (
     <div className="bg-slate-100 dark:bg-[#020617] ">
       <div className="max-w-7xl  mx-auto py-20 flex flex-col items-center justify-center px-4 lg:px-6">
@@ -60,13 +78,13 @@ export function Projects() {
                 className="group relative border rounded-xl dark:bg-slate-900 bg-slate-100 shadow-md"
               >
                 <Image
-                  src={post?.image}
+                  src={(post?.image ? (post.image.startsWith('/') ? post.image : `/${post.image}`) : "/default-project.png")}
                   className="aspect-video w-full rounded-t-xl"
                   width={700}
                   height={500}
                   blurDataURL="blur"
                   placeholder="blur"
-                  alt={post?.title}
+                  alt={post?.title || "Project image"}
                 />
                 <div className="min-h-min p-3">
                 #{post.category?.toLocaleLowerCase() || "uncategorized"}
