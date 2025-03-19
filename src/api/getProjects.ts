@@ -12,6 +12,7 @@ export interface Project {
   sourceCode: string;
   liveLink: string;
   image: string;
+  tags?: string[];
 }
 
 export async function getProjects(): Promise<{ project: Project[] }> {

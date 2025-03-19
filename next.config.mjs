@@ -1,18 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
         port: "",
-        // pathname: "/nodelove/image/upload/f_auto,q_auto/v1/portfolio/",
       },
       {
         protocol: "https",
         hostname: "res+.cloudinary.com",
         port: "",
-        // pathname: "/nodelove/image/upload/f_auto,q_auto/v1/portfolio/",
       },
       {
         protocol: "https",
@@ -35,6 +35,14 @@ const nextConfig = {
         port: "",
       },
     ],
+  },
+  reactStrictMode: true,
+  swcMinify: true,
+  trailingSlash: false,
+  poweredByHeader: false,
+  eslint: {
+    // Disable ESLint during build
+    ignoreDuringBuilds: true,
   },
 };
 

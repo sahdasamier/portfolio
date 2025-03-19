@@ -9,9 +9,15 @@ const Project = async ({ params }: { params: { id: string } }) => {
     return <div>Project not found.</div>;
   }
 
+  // Add the tags property if it doesn't exist
+  const projectWithTags = {
+    ...project,
+    tags: project.tags || [], // Provide a default empty array if tags doesn't exist
+  };
+
   return (
     <>
-      <ProjectPage project={project} />
+      <ProjectPage project={projectWithTags} />
     </>
   );
 };

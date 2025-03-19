@@ -20,7 +20,6 @@ export const metadata: Metadata = {
         alt: "Contact Page",
       },
     ],
-
     siteName: "Contact Page",
     type: "website",
     url: "https://mdranju.xyz/contact",
@@ -31,8 +30,7 @@ export const metadata: Metadata = {
       "I think it's great that you're open to hearing from others! Sharing thoughts fosters connection and creativity. Whether it's a deep insight, casual chat, or random idea, communication builds understanding.",
     images: [
       {
-        url: metaData.image,
-
+        url: metaData.imageOfSia,
         alt: "Contact Page",
       },
     ],

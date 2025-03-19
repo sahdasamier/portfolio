@@ -20,12 +20,19 @@ type Project = {
   sourceCode: string;
   liveLink: string;
   image: string;
+  
 };
 
 type ProjectPageProps = {
   project: Project;
+  
 };
-
+interface ProjectProps {
+  project: {
+    // other properties...
+    tags?: string[]; // Make tags optional
+  };
+}
 const ProjectPage = ({ project }: ProjectPageProps) => {
   const router = useRouter();
 
