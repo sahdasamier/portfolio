@@ -13,7 +13,7 @@ export async function getProjects() {
     const projects = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
-      createdAt: doc.data().createdAt?.toDate() || new Date()
+      createdAt: doc.data().createdAt || new Date().toISOString()
     }));
     
     return { project: projects };
@@ -36,7 +36,7 @@ export async function getProject(id: string) {
     return {
       id: projectSnap.id,
       ...projectData,
-      createdAt: projectData.createdAt?.toDate() || new Date()
+      createdAt: projectData.createdAt || new Date().toISOString()
     };
   } catch (error) {
     console.error("Error fetching project from Firestore:", error);

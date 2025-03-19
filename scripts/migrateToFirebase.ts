@@ -1,5 +1,20 @@
-import { db } from "../src/firebase/config";
-import { collection, addDoc } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCyhX2CfgMSq9UT5pSf8slvo9EOKw3SOCU",
+  authDomain: "sahda-samier.firebaseapp.com",
+  projectId: "sahda-samier",
+  storageBucket: "sahda-samier.firebasestorage.app",
+  messagingSenderId: "460904066646",
+  appId: "1:460904066646:web:e3dd3f5ac7e736b0a595f7",
+  measurementId: "G-VSNLF5C69H"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const projects = [
   {
@@ -11,6 +26,7 @@ const projects = [
     author: "Sahda Samier Ahmed",
     sourceCode: "https://github.com/Whats-Cookin/whats-cookin-v1.1/",
     avatar: "https://avatars.githubusercontent.com/u/80270685?v=4",
+    createdAt: new Date().toISOString()
   },
   {
     category: "web-development",
@@ -21,6 +37,7 @@ const projects = [
     author: "Sahda Samier Ahmed",
     sourceCode: "https://github.com/Whats-Cookin/trust_claim",
     avatar: "https://avatars.githubusercontent.com/u/80270685?v=4",
+    createdAt: new Date().toISOString()
   },
   {
     category: "web-development",
@@ -31,6 +48,7 @@ const projects = [
     author: "Sahda Samier Ahmed",
     sourceCode: "https://github.com/AHC-APPS/observership/",
     avatar: "https://avatars.githubusercontent.com/u/80270685?v=4",
+    createdAt: new Date().toISOString()
   },
   {
     category: "web-development",
@@ -41,6 +59,7 @@ const projects = [
     author: "Sahda Samier Ahmed",
     sourceCode: "https://github.com/Whats-Cookin/decentralized_linkedin",
     avatar: "https://avatars.githubusercontent.com/u/80270685?v=4",
+    createdAt: new Date().toISOString()
   },
   {
     category: "web-development",
@@ -51,6 +70,7 @@ const projects = [
     author: "Sahda Samier Ahmed",
     sourceCode: "https://github.com/sahdasamier/tic-tac-toe",
     avatar: "https://avatars.githubusercontent.com/u/80270685?v=4",
+    createdAt: new Date().toISOString()
   },
   {
     category: "web-development",
@@ -61,6 +81,7 @@ const projects = [
     author: "Sahda Samier Ahmed",
     sourceCode: "https://github.com/sahdasamier/Launching-a-post.git",
     avatar: "https://avatars.githubusercontent.com/u/80270685?v=4",
+    createdAt: new Date().toISOString()
   },
   {
     category: "web-development",
@@ -71,6 +92,7 @@ const projects = [
     author: "Sahda Samier Ahmed",
     sourceCode: "https://github.com/sahdasamier/to-control-the-tabs",
     avatar: "https://avatars.githubusercontent.com/u/80270685?v=4",
+    createdAt: new Date().toISOString()
   },
   {
     category: "web-development",
@@ -81,6 +103,7 @@ const projects = [
     author: "Sahda Samier Ahmed",
     sourceCode: "https://github.com/sahdasamier/TO-DO-BLOG.git",
     avatar: "https://avatars.githubusercontent.com/u/80270685?v=4",
+    createdAt: new Date().toISOString()
   },
 ];
 
@@ -91,10 +114,7 @@ async function migrateDataToFirebase() {
 
     // Add each project to Firestore
     for (const project of projects) {
-      await addDoc(projectsCollection, {
-        ...project,
-        createdAt: new Date(),
-      });
+      await addDoc(projectsCollection, project);
       console.log(`Added project: ${project.title}`);
     }
 

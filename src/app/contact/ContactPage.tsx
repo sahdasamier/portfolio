@@ -1,7 +1,6 @@
 "use client";
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/no-unescaped-entities */
-import { URL } from "@/api/cron/route";
 import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
 import { AnimatedSubscribeButton } from "@/components/ui/animated-subscribe-button";
 import { Button } from "@/components/ui/moving-border";
@@ -26,58 +25,7 @@ function Contact() {
   const [error, setError] = useState("");
   const buttonRef = useRef(null);
 
-  const handleInputChange = (event: any) => {
-    const { name, value } = event.target;
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch(`${URL}/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (formData.firstName === "") {
-        setError("First Name is required!");
-      } else if (formData.lastName === "") {
-        setError("Last Name is required!");
-      } else if (formData.email === "") {
-        setError("Email is required!");
-      } else if (formData.phone === "") {
-        setError("Phone number is required!");
-      } else if (formData.message === "") {
-        setError("Message is required!");
-      }
-
-      const data = await response.json();
-
-      if (data.success) {
-        toast.success(data.massage);
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
-        setError("");
-      } else {
-        toast.error(data.message);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
 
   return (
     <>
