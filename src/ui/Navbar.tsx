@@ -6,10 +6,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import DashboardMenu from "./DashboardMenu/DashboardMenu";
+import { useAuth } from "@/hooks/useAuth";
 
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+interface MenuItem {
+  name: string;
+  href: string;
+}
 
-const menuItems = [
+const menuItems: MenuItem[] = [
   {
     name: "Home",
     href: "/",
@@ -18,7 +22,6 @@ const menuItems = [
     name: "Projects",
     href: "/projects",
   },
-  
   {
     name: "About",
     href: "/about",
@@ -27,20 +30,19 @@ const menuItems = [
     name: "Contact",
     href: "/contact",
   },
-  
 ];
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
+  const { user, loading } = useAuth();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const { isAuthenticated } = useKindeBrowserClient();
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
+  useMotionValueEvent(scrollY, "change", (latest: number) => {
     const previous = scrollY.getPrevious() ?? 0;
     if (previous !== undefined && latest > previous && latest > 150) {
       setHidden(true);
@@ -48,125 +50,92 @@ function Navbar() {
       setHidden(false);
     }
   });
+
   return (
     <motion.header
       variants={{
         visible: { y: 0 },
-        hidden: { y: "-150%" },
+        hidden: { y: "-100%" },
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
-      className="sticky lg:top-3 top-0 z-50  mx-auto max-w-7xl rounded-full lg:border lg:border-slate-500/10  flex-none shadow-sm transition-colors duration-500 lg:z-50  dark:border-slate-50/[0.06]   bg-slate-50/5 backdrop-blur-2xl supports-backdrop-blur:bg-white/10 dark:bg-slate-900/5 -mb-20"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800"
     >
-      <div className="relative w-full">
-        <div className="bg-background text-foreground" />
-        <div className="mx-auto flex container items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" className="w-12 h-12">
-                <path d="M70 50 L50 75 L70 100" stroke="#3498db" strokeWidth="6" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M230 50 L250 75 L230 100" stroke="#3498db" strokeWidth="6" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                
-                <text x="150" y="85" fontFamily="monospace" fontSize="68" fontWeight="bold" textAnchor="middle" fill="currentColor">sia</text>
-                
-                <rect x="190" y="65" width="4" height="30" fill="currentColor">
-                  <animate attributeName="opacity" values="1;0;1" dur="1.5s" repeatCount="indefinite" />
-                </rect>
-                
-                <text x="110" y="40" fontFamily="monospace" fontSize="12" fill="currentColor">01110011</text>
-                <text x="180" y="40" fontFamily="monospace" fontSize="12" fill="currentColor">01101001</text>
-                <text x="145" y="120" fontFamily="monospace" fontSize="12" fill="currentColor">01100001</text>
-              </svg>
-              
-            </div>
+      <nav className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          <Link href="/" className="text-2xl font-bold">
+            MDR
           </Link>
-          <div className="hidden grow items-start lg:flex md:flex md:flex-grow flex-row justify-end space-x-1">
-            <ul className="ml-12 inline-flex space-x-8 justify-center items-center">
-              {menuItems.map((item) => {
-                const isActive =
-                  pathname === item.href ||
-                  (pathname.startsWith(item.href) && item.href !== "/");
-                return (
-                  <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      className={`inline-flex items-center text-lg font-semibold px-2  hover:underline underline-offset-4 dark:hover:text-indigo-500 hover:text-indigo-400 transition-all ease-in-out duration-150 ${
-                        isActive
-                          ? "font-bold text-indigo-600 dark:text-indigo-600"
-                          : ""
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                );
-              })}
-              {isAuthenticated && (
-                <li
-                  className={`inline-flex items-center text-lg font-bold px-2  dark:hover:text-slate-500 hover:text-slate-400 transition-all ease-in-out duration-150 `}
-                >
-                  <DashboardMenu />
-                </li>
-              )}
-            </ul>
-          </div>
-
-          <div className="m-2">
+          <div className="hidden md:flex items-center space-x-8">
+            {menuItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`text-sm font-medium transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
+                  pathname === item.href
+                    ? "text-indigo-600 dark:text-indigo-400"
+                    : "text-slate-600 dark:text-slate-300"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+            {loading ? (
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+            ) : user ? (
+              <DashboardMenu />
+            ) : (
+              <Link
+                href="/auth/signin"
+                className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300"
+              >
+                Sign In
+              </Link>
+            )}
             <ModeToggle />
           </div>
-
-          <div className={`dropdown `}>
-            <div className="flex justify-center items-center">
-              <div className=" lg:hidden">
-                {isAuthenticated && <DashboardMenu />}
-              </div>
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost lg:hidden"
-              >
-                {isMenuOpen ? (
-                  <X onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
-                ) : (
-                  <Menu
-                    onClick={toggleMenu}
-                    className="h-6 w-6 cursor-pointer"
-                  />
-                )}
-              </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className={`menu menu-sm dropdown-content z-[1000] bg-slate-100 dark:bg-slate-900 rounded-box  mt- w-52 px-6 py-5 shadow right-0 text-lg gap-3 font-medium ${
-                isMenuOpen ? "block" : "hidden"
-              }`}
+          <div className="md:hidden flex items-center space-x-4">
+            <ModeToggle />
+            <button
+              onClick={toggleMenu}
+              className="text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400"
             >
-              {menuItems.map((item) => {
-                const isActive =
-                  pathname === item.href ||
-                  (pathname.startsWith(item.href) && item.href !== "/");
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={toggleMenu}
-                    className={`-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-800 ${
-                      isActive ? "underline underline-offset-4 " : ""
-                    }`}
-                  >
-                    <span className="ml-3 text-base font-medium text-slate-900 dark:text-slate-100">
-                      {item.name}
-                    </span>
-                    <span>
-                      <ChevronRight className="ml-3 h-4 w-4" />
-                    </span>
-                  </Link>
-                );
-              })}
-            </ul>
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
-      </div>
+        {isMenuOpen && (
+          <div className="md:hidden mt-4 space-y-4">
+            {menuItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`block text-sm font-medium transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
+                  pathname === item.href
+                    ? "text-indigo-600 dark:text-indigo-400"
+                    : "text-slate-600 dark:text-slate-300"
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+            {loading ? (
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+            ) : user ? (
+              <DashboardMenu />
+            ) : (
+              <Link
+                href="/auth/signin"
+                className="block text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign In
+              </Link>
+            )}
+          </div>
+        )}
+      </nav>
     </motion.header>
   );
 }
