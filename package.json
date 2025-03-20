@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
     "lint": "next lint",
     "clean": "rm -rf .next out node_modules/.cache",
-    "export": "next build && next export",
     "deploy": "yarn clean && yarn build && firebase deploy --only hosting"
   },
   "dependencies": {

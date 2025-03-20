@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import DashboardMenu from "./DashboardMenu/DashboardMenu";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/app/components/Providers";
 
 interface MenuItem {
   name: string;

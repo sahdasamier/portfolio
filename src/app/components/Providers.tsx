@@ -26,6 +26,14 @@ const defaultContext: AuthContextType = {
 
 export const AuthContext = createContext<AuthContextType>(defaultContext);
 
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
+
 const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: React.ReactNode }) {
