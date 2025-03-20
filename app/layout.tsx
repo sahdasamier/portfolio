@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./components/Providers";
 import Navbar from "@/ui/Navbar";
 import Footer from "@/ui/Footer";
 import metaData from "@/data/metadata.json";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ScrollToTop from "@/utils/ScrollToTop/ScrollToTop";
-import Providers from "./components/Providers";
 
-const space_Grotesk = Space_Grotesk({ subsets: ["latin"], weight: "700" });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
@@ -36,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={space_Grotesk.className} suppressHydrationWarning>
+      <body className={inter.className}>
         <Providers>
           <div className="flex flex-col min-h-screen">
             <Navbar />
