@@ -9,7 +9,10 @@ npm install
 # Build the project
 npm run build
 
-# Ensure 200.html exists (for client-side routing)
+# Copy the custom index.html to the out directory
+cp public/index.html out/index.html
+
+# Create 200.html for client-side routing
 cp out/index.html out/200.html
 
 # Create .nojekyll file
