@@ -1,4 +1,4 @@
-import { db } from "@/lib/firebase";
+import { db } from '@/src/lib/firebase/config';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 
 export interface Project {

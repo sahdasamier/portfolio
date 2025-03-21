@@ -11,12 +11,12 @@ import { RiJavascriptFill } from "react-icons/ri";
 import { SiExpress, SiNextdotjs, SiTailwindcss } from "react-icons/si";
 import princessImage from "../../public/princessImage.jpeg";
 
-import { FlipWords } from "@/components/ui/flip-words";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { OrbitingCircles } from "@/components/ui/orbiting-circles";
-import ShimmerButton from "@/components/ui/shimmer-button";
-import SparklesText from "@/components/ui/sparkles-text";
-import { Spotlight } from "@/components/ui/spotlight";
+import { FlipWords } from '@/src/components/ui/flip-words';
+import { HoverBorderGradient } from '@/src/components/ui/hover-border-gradient';
+import { OrbitingCircles } from "@/src/components/ui/orbiting-circles";
+import ShimmerButton from "@/src/components/ui/shimmer-button";
+import SparklesText from '@/src/components/ui/sparkles-text';
+import { Spotlight } from '@/src/components/ui/spotlight';
 import Link from "next/link";
 import { MdDownload } from "react-icons/md";
 
@@ -29,6 +29,7 @@ const words = [
   "Backend.",
   "Frontend.",
 ];
+
 function HeroSection() {
   return (
     <div className="relative w-full lg:py-20 lg:pt-32 pt-10 bg-slate-100 dark:bg-[#020617]  antialiased  overflow-hidden ">
@@ -164,10 +165,4 @@ function HeroSection() {
   );
 }
 
-<button
-  type="button"
-  className="rounded-md border bg-green-400 hover:bg-green-500 text-black border-green-300 px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 w-40 focus-visible:outline-offset-2 focus-visible:outline-black"
->
-  Download Resume
-</button>;
 export default HeroSection;

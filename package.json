@@ -1,14 +1,14 @@
 {
-  "name": "my-app",
+  "name": "portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next start",
     "lint": "next lint",
-    "clean": "rm -rf .next out node_modules/.cache",
-    "deploy": "yarn clean && yarn build && firebase deploy --only hosting"
+    "clean": "rm -rf .next out",
+    "deploy": "yarn clean && yarn build && firebase deploy"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -39,7 +39,7 @@
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
     "embla-carousel-react": "^8.0.0-rc19",
-    "firebase": "^11.4.0",
+    "firebase": "^11.5.0",
     "firebase-admin": "^13.2.0",
     "framer-motion": "^11.18.2",
     "lucide-react": "^0.312.0",
@@ -48,7 +48,7 @@
     "next-themes": "^0.2.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^5.4.0",
+    "react-icons": "^5.5.0",
     "react-toastify": "^10.0.6",
     "recharts": "^2.15.1",
     "sass": "^1.83.4",

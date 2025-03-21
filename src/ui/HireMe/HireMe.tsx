@@ -1,5 +1,5 @@
-import ShinyButton from "@/components/ui/shiny-button";
-import { TextShimmer } from "@/components/ui/text-shimmer";
+import ShinyButton from '@/src/components/ui/shiny-button';
+import { TextShimmer } from '@/src/components/ui/text-shimmer';
 import Link from "next/link";
 const HireMe = () => {
   return (

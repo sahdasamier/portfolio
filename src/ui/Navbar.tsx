@@ -1,5 +1,5 @@
 "use client";
-import { ModeToggle } from "@/components/ui/ModeToggle";
+import { ModeToggle } from '@/src/components/ui/ModeToggle';
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { ChevronRight, Menu, X } from "lucide-react";
 import Link from "next/link";

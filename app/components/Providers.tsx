@@ -2,9 +2,10 @@
 
 import { createContext, useContext, ReactNode, useEffect, useState } from 'react';
 import { User, signInWithPopup } from 'firebase/auth';
-import { auth, googleProvider } from '@/lib/firebase';
+import { auth, googleProvider } from '@/src/lib/firebase/config';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ThemeProvider } from "@/components/ui/theme-provider";
+import { ThemeProvider } from '@/src/components/ui/theme-provider';
+import { app } from '@/src/lib/firebase/config';
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -72,7 +73,6 @@ export function Providers({ children }: { children: ReactNode }) {
         defaultTheme="system"
         enableSystem
         disableTransitionOnChange
-        storageKey="theme"
       >
         <AuthProvider>
           {children}

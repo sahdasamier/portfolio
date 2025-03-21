@@ -1,10 +1,12 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from "react";
-import { User, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
-import { auth, googleProvider } from "@/lib/firebase";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider } from "@/components/ui/theme-provider";
+import { createContext, useContext, ReactNode, useEffect, useState } from 'react';
+import { User, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
+import { auth, googleProvider } from '@/src/lib/firebase/config';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ThemeProvider } from '@/src/components/ui/theme-provider';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { app } from '@/src/lib/firebase/config';
 
 interface AuthContextType {
   user: User | null;
@@ -25,22 +27,29 @@ const defaultContext: AuthContextType = {
 };
 
 export const AuthContext = createContext<AuthContextType>(defaultContext);
+export const useAuth = () => useContext(AuthContext);
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false,
+      staleTime: Infinity,
+    },
+  },
+});
 
-const queryClient = new QueryClient();
-
-export function Providers({ children }: { children: React.ReactNode }) {
+function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
+    
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
@@ -51,6 +60,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   const signInWithGoogle = async () => {
     try {
+      if (!auth) throw new Error('Auth not initialized');
       await signInWithPopup(auth, googleProvider);
     } catch (error) {
       console.error("Error signing in with Google:", error);
@@ -60,6 +70,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   const logout = async () => {
     try {
+      if (!auth) throw new Error('Auth not initialized');
       await signOut(auth);
     } catch (error) {
       console.error("Error signing out:", error);
@@ -67,25 +78,48 @@ export function Providers({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const authContextValue = {
-    user,
-    loading,
-    signInWithGoogle,
-    logout,
-  };
+  return (
+    <AuthContext.Provider value={{ user, loading, signInWithGoogle, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // Use a longer delay to ensure all browser extensions have initialized
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 50);
+
+    return () => {
+      clearTimeout(timer);
+      setMounted(false);
+    };
+  }, []);
+
+  // During SSR and initial client render, return a placeholder
+  if (!mounted) {
+    return (
+      <div style={{ visibility: 'hidden', height: '100%', width: '100%' }}>
+        {children}
+      </div>
+    );
+  }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <AuthContext.Provider value={authContextValue}>
-          {children}
-        </AuthContext.Provider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <ThemeProvider>
+            <div className="contents">
+              {children}
+            </div>
+          </ThemeProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 } 
