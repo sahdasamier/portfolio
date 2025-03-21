@@ -128,7 +128,7 @@ export function Projects() {
                     </div>
                   )}
                   <div>
-                    <Link href={`/project/${post.id}`} className="flex gap-x-1 items-center">
+                    <Link href={`/projects/${post.id}`} className="flex gap-x-1 items-center">
                       <HoverBorderGradient
                         containerClassName="rounded-lg"
                         as="button"

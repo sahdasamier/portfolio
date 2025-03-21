@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { createDynamicLink } from '@/lib/firebase/dynamicLinks';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import logo from '../../public/logo.svg';
 
 export function Navbar() {
   const pathname = usePathname();
@@ -36,16 +38,24 @@ export function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
-      <div className="max-w-8xl mx-auto">
-        <div className="py-4 px-4 sm:px-6 lg:px-8">
-          <div className="relative flex items-center">
-            <Link href={getLink('/')} className="mr-3 flex-none overflow-hidden md:w-auto">
-              <span className="sr-only">Sahda Samier</span>
-              <span className="text-xl font-bold">Sahda Samier</span>
-            </Link>
-            <div className="relative hidden md:flex items-center ml-auto">
-              <nav className="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md dark:bg-slate-900/80">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 justify-between">
+          <div className="flex">
+            <div className="flex flex-shrink-0 items-center">
+              <Link href="/">
+                <Image
+                  src={logo}
+                  alt="Logo"
+                  width={40}
+                  height={40}
+                  className="h-10 w-auto"
+                  priority
+                />
+              </Link>
+            </div>
+            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <nav className="flex">
                 <ul className="flex space-x-8">
                   <li>
                     <Link

@@ -4040,6 +4040,11 @@ firebase-admin@^13.2.0:
     "@google-cloud/firestore" "^7.11.0"
     "@google-cloud/storage" "^7.14.0"
 
+firebase-dynamic-links@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/firebase-dynamic-links/-/firebase-dynamic-links-1.2.0.tgz#34bdd4240e5c7a4ef3ba389f326537a739731693"
+  integrity sha512-t449lQy97L+S57aD5qa9Om7iFCBW14oxdh9qOKw4fAdDVT5BOrADApxEDCDvglQoGmTbhzAWMYipYnNwXsszhg==
+
 firebase@^11.5.0:
   version "11.5.0"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-11.5.0.tgz#9a358ed8c7e805de8df64061840b2593ae706165"

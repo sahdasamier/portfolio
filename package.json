@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && touch out/.nojekyll && cp out/index.html out/404.html && cp out/index.html out/500.html",
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf .next out",
@@ -41,6 +41,7 @@
     "embla-carousel-react": "^8.0.0-rc19",
     "firebase": "^11.5.0",
     "firebase-admin": "^13.2.0",
+    "firebase-dynamic-links": "^1.2.0",
     "framer-motion": "^11.18.2",
     "lucide-react": "^0.312.0",
     "motion": "^11.18.2",

@@ -1,12 +1,10 @@
 "use client";
 import { ModeToggle } from '@/src/components/ui/ModeToggle';
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { ChevronRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import DashboardMenu from "./DashboardMenu/DashboardMenu";
-import { useAuth } from "@/app/components/Providers";
 
 interface MenuItem {
   name: string;
@@ -36,7 +34,7 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
-  const { user, loading } = useAuth();
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -64,7 +62,7 @@ function Navbar() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold">
-            MDR
+             SIA
           </Link>
           <div className="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => (
@@ -80,18 +78,6 @@ function Navbar() {
                 {item.name}
               </Link>
             ))}
-            {loading ? (
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
-            ) : user ? (
-              <DashboardMenu />
-            ) : (
-              <Link
-                href="/auth/signin"
-                className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300"
-              >
-                Sign In
-              </Link>
-            )}
             <ModeToggle />
           </div>
           <div className="md:hidden flex items-center space-x-4">
@@ -120,19 +106,6 @@ function Navbar() {
                 {item.name}
               </Link>
             ))}
-            {loading ? (
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
-            ) : user ? (
-              <DashboardMenu />
-            ) : (
-              <Link
-                href="/auth/signin"
-                className="block text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sign In
-              </Link>
-            )}
           </div>
         )}
       </nav>

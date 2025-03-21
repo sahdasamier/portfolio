@@ -10,30 +10,6 @@
     "trailingSlash": false,
     "rewrites": [
       {
-        "source": "/projects",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/projects/**",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/about",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/contact",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/.well-known/apple-app-site-association",
-        "destination": "/apple-app-site-association"
-      },
-      {
-        "source": "/.well-known/assetlinks.json",
-        "destination": "/assetlinks.json"
-      },
-      {
         "source": "**",
         "destination": "/index.html"
       }

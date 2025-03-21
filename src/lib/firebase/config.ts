@@ -1,4 +1,4 @@
-import { initializeApp, getApps } from 'firebase/app';
+import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
@@ -14,20 +14,20 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
-let analytics = null;
-let db = null;
-let auth = null;
-let googleProvider = null;
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 
+// Initialize services
+const db = getFirestore(app);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+
+// Initialize analytics only in browser environment
+let analytics = null;
 if (typeof window !== 'undefined') {
   try {
     analytics = getAnalytics(app);
-    db = getFirestore(app);
-    auth = getAuth(app);
-    googleProvider = new GoogleAuthProvider();
   } catch (error) {
-    console.error('Error initializing Firebase:', error);
+    console.error('Error initializing Firebase Analytics:', error);
   }
 }
 

@@ -1,214 +1,192 @@
 "use client";
-import getProjects from "@/api/getProjects"; // Updated import
-import ShineBorder from "@/components/ui/shine-border";
-import SkeletonUI from "@/ui/SkeletonUI";
+import { getProjects, Project } from "@/src/api/getProjects";
+import { createProjectLink } from "@/src/lib/firebase/dynamicLinks";
+import ShineBorder from "@/src/components/ui/shine-border";
+import SkeletonUI from "@/src/ui/SkeletonUI";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa6";
 import { HiViewGridAdd } from "react-icons/hi";
 import { MdOpenInNew } from "react-icons/md";
-
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import Meteors from "@/components/ui/meteors";
-import ScrollProgress from "@/components/ui/scroll-progress";
+import { HoverBorderGradient } from "@/src/components/ui/hover-border-gradient";
+import Meteors from "@/src/components/ui/meteors";
+import ScrollProgress from "@/src/components/ui/scroll-progress";
 import { useQuery } from "@tanstack/react-query";
-import { format } from "date-fns";
-import { NumberTicker } from "@/components/ui/number-ticker";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-function Project() {
-  // Fetch projects from Firestore
-  const { data, isLoading, isError, error } = useQuery({
+interface ProjectsPageProps {
+  projects: Project[];
+}
+
+export default function ProjectsPage({ projects }: ProjectsPageProps) {
+  const router = useRouter();
+  const [projectLinks, setProjectLinks] = useState<Record<string, string>>({});
+  const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["projects"],
-    queryFn: getProjects, // Use the Firestore fetch function
+    queryFn: getProjects,
     staleTime: 60000,
+    retry: 3,
   });
 
-  if (isError) {
-    return <div>Error: {(error as Error).message}</div>;
+  useEffect(() => {
+    // Log any errors for debugging
+    if (isError) {
+      console.error("Error fetching projects:", error);
+    }
+  }, [isError, error]);
+
+  useEffect(() => {
+    async function generateProjectLinks() {
+      if (data?.project) {
+        const links: Record<string, string> = {};
+        for (const project of data.project) {
+          try {
+            const link = await createProjectLink(project.id);
+            links[project.id] = link;
+          } catch (error) {
+            console.error(`Error generating link for project ${project.id}:`, error);
+            links[project.id] = `/projects/${project.id}`;
+          }
+        }
+        setProjectLinks(links);
+      }
+    }
+
+    generateProjectLinks();
+  }, [data?.project]);
+
+  if (isLoading) {
+    return <SkeletonUI />;
   }
 
-  // Sort projects based on title to match migration file order
-  const projectOrder = [
-    "What's Cookin'",
-    "Linked trust",
-    "Magdi Yacoub Heart Foundation",
-    "Decentralized_linkedin",
-    "Tic Tac Toe",
-    "In Symphony",
-    "Task Canvas: Your Daily Masterpiece",
-    "Quill Quotient"
-  ];
+  if (isError) {
+    return (
+      <div className="min-h-screen bg-slate-100 dark:bg-[#020617] pt-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold mb-4">Error Loading Projects</h1>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
+              An error occurred while loading the projects.
+            </p>
+            <button
+              onClick={() => refetch()}
+              className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-  const sortedProjects = data?.project?.sort((a: any, b: any) => {
-    const indexA = projectOrder.indexOf(a.title);
-    const indexB = projectOrder.indexOf(b.title);
-    return indexA - indexB;
+  const sortedProjects = data?.project?.sort((a: Project, b: Project) => {
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+    return dateB.getTime() - dateA.getTime();
   });
 
-  return (
-    <div className="relative overflow-hidden bg-slate-100 dark:bg-[#020617] py-20">
-      <ScrollProgress className="top-[0px]" />
-      <Meteors number={30} />
-      <div className="mx-auto max-w-7xl px-2">
-        <div className="flex flex-col pb-10 pt-12 md:pt-24">
-          <p className="text-3xl font-bold md:text-5xl md:leading-10 mb-8 leading-tight sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 from-10% via-cyan-500 via-30% to-sky-500 to-90% lg:z-50">
-            Projects & Products
-          </p>
-          <hr />
-          <p className="lg:max-w-4xl text-base md:text-xl mt-8 mb-2">
-            Here is some kind of{" "}
-            <NumberTicker
-              value={sortedProjects?.length || 0}
-              className="whitespace-pre-wrap text-base md:text-xl font-medium tracking-tighter text-black dark:text-white"
-            />{" "}
-            project&apos;s I have finished.
-          </p>
-        </div>
-
-        {isLoading && (
-          <div
-            className={`grid gap-6 gap-y-10 py-6 md:grid-cols-2  rounded lg:grid-cols-3 `}
-          >
-            <SkeletonUI />
-            <SkeletonUI />
-            <SkeletonUI />
-            <SkeletonUI />
-            <SkeletonUI />
-            <SkeletonUI />
+  if (!sortedProjects || sortedProjects.length === 0) {
+    return (
+      <div className="min-h-screen bg-slate-100 dark:bg-[#020617] pt-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold mb-4">No Projects Found</h1>
+            <p className="text-gray-600 dark:text-gray-400">
+              There are currently no projects to display.
+            </p>
           </div>
-        )}
-        {!isLoading && (
-          <div className="grid gap-6 gap-y-6 py-6 md:grid-cols-2 rounded-xl lg:grid-cols-3">
-            {Array.isArray(sortedProjects) &&
-              sortedProjects.map((post: any) => {
-                // Add validation here
-                if (!post.id || !post.title) {
-                  console.error('Invalid project data:', post);
-                  return null; // Skip rendering this project
-                } 
-                return(
-                <ShineBorder
-                  key={post.id} // Use Firestore document ID
-                  className="relative flex lg:h-[450px] w-full flex-col items-center justify-center overflow-hidden rounded-xl border bg-background md:shadow-xl"
-                  color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
-                >
-                  <div className="border h-full group rounded-xl shadow-xl dark:bg-slate-900 bg-slate-100">
-                    <Image
-                      src={(post.image ? (post.image.startsWith('/') ? post.image : `/${post.image}`) : "/default-project.png")}
-                      className="aspect-video w-full rounded-t-xl"
-                      width={500}
-                      height={500}
-                      blurDataURL="blur"
-                      placeholder="blur"
-                      alt={post.title || "Project image"}
-                    />
-                    <div className="min-h-min p-3">
-                      <p className="mt-4 w-full text-xs font-semibold leading-tight">
-                        #{post.category?.toLocaleLowerCase() || "uncategorized"}
-                      </p>
-                      <div></div>
-                      <p
-                        className="mt-4 flex-1 text-base font-semibold"
-                        title={post.title}
+        </div>
+      </div>
+    );
+  }
+
+  const handleDetailsClick = (projectId: string) => {
+    window.location.href = `/projects/${projectId}`;
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-100 dark:bg-[#020617]">
+      <ScrollProgress />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 pb-10">
+        <div className="relative">
+          <div className="flex flex-col items-center justify-center text-center">
+            <h1 className="text-3xl font-bold sm:text-4xl">Projects</h1>
+            <p className="mt-4 max-w-[85%] leading-normal text-slate-900 dark:text-slate-200 sm:text-lg sm:leading-7">
+              Explore my portfolio of web development projects, showcasing my skills
+              in building modern, responsive, and user-friendly applications.
+            </p>
+            <Meteors number={20} />
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {sortedProjects.map((project: Project) => (
+              <ShineBorder key={project.id}>
+                <div className="group relative h-full rounded-xl bg-slate-100 dark:bg-slate-900">
+                  <Image
+                    src={project.image || "/default-project.png"}
+                    alt={project.title}
+                    width={500}
+                    height={300}
+                    className="aspect-video w-full rounded-t-xl object-cover"
+                    priority
+                  />
+                  <div className="p-4">
+                    <p className="text-sm font-semibold text-slate-500">
+                      #{project.category?.toLowerCase() || "uncategorized"}
+                    </p>
+                    <h2 className="mt-2 text-xl font-bold">{project.title}</h2>
+                    <p className="mt-2 line-clamp-3 text-slate-600 dark:text-slate-400">
+                      {project.details}
+                    </p>
+                    
+                    <div className="mt-4 flex gap-4">
+                      {project.sourceCode && (
+                        <Link href={project.sourceCode} target="_blank">
+                          <HoverBorderGradient
+                            containerClassName="rounded-lg"
+                            as="button"
+                            className="dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-100 flex items-center"
+                          >
+                            <FaGithub className="text-lg mr-2" /> GitHub
+                          </HoverBorderGradient>
+                        </Link>
+                      )}
+                      {project.liveLink && (
+                        <Link href={project.liveLink} target="_blank">
+                          <HoverBorderGradient
+                            containerClassName="rounded-lg"
+                            as="button"
+                            className="dark:bg-indigo-500 bg-indigo-500 text-white flex items-center"
+                          >
+                            <MdOpenInNew className="text-lg mr-2" /> Live
+                          </HoverBorderGradient>
+                        </Link>
+                      )}
+                      <a
+                        href={`/projects/${project.id}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleDetailsClick(project.id);
+                        }}
                       >
-                        {post.title?.length > 40
-                          ? post.title.substring(0, 38).concat("...")
-                          : post.title || "Untitled Project"}
-                      </p>
-                      <p
-                        className="mt-2 w-full text-sm leading-normal"
-                        title={post.details}
-                      >
-                        {post.details?.length > 150
-                          ? post.details.substring(0, 150).concat("...")
-                          : post.details || "No description"}
-                      </p>
-
-                      <div className="mt-4 flex lg:space-x-3 space-x-2">
-                        <Image
-                          className="h-full lg:w-10 w-8 rounded-lg"
-                          src={post.avatar || "/default-avatar.png"} // Fallback for missing avatar
-                          width={500}
-                          height={500}
-                          blurDataURL="blur"
-                          placeholder="blur"
-                          alt={post.author || "Author"}
-                        />
-                        <div>
-                          <p className="text-xs font-semibold leading-tight">
-                            {post.author || "Unknown author"}
-                          </p>
-                          <span className="text-xs leading-tight">
-                            Added:{" "}
-                            {post.createdAt
-                              ? format(new Date(post.createdAt), "dd/MM/yyyy")
-                              : "Unknown date"}
-                          </span>
-                        </div>
-
-                        {post.sourceCode && (
-                          <div>
-                            <Link
-                              href={post.sourceCode}
-                              target="_blank"
-                              className="transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"
-                            >
-                              <HoverBorderGradient
-                                containerClassName="rounded-lg"
-                                as="button"
-                                className="dark:bg-slate-800 bg-slate-200 text-slate-900 dark:text-slate-100 flex items-center space-x-2"
-                              >
-                                <FaGithub className="font-extrabold text-lg" />
-                              </HoverBorderGradient>
-                            </Link>
-                          </div>
-                        )}
-
-                        {post.liveLink && (
-                          <div>
-                            <Link
-                              href={post.liveLink}
-                              target="_blank"
-                              className="transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"
-                            >
-                              <HoverBorderGradient
-                                containerClassName="rounded-lg"
-                                as="button"
-                                className="dark:bg-indigo-500 bg-indigo-500 text-slate-100 dark:text-slate-100 flex items-center space-x-2"
-                              >
-                                <MdOpenInNew className="font-extrabold text-lg" />
-                              </HoverBorderGradient>
-                            </Link>
-                          </div>
-                        )}
-
-                        {post.id && (
-                          <div>
-                            <Link
-                              href={`/project/${post.id}`}
-                              className="transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"
-                            >
-                              <HoverBorderGradient
-                                containerClassName="rounded-lg"
-                                as="button"
-                                className="dark:bg-slate-800 bg-slate-200 text-slate-900 dark:text-slate-100 flex items-center space-x-2"
-                              >
-                                <HiViewGridAdd className="font-extrabold text-lg" />
-                              </HoverBorderGradient>
-                            </Link>
-                          </div>
-                        )}
-                      </div>
+                        <HoverBorderGradient
+                          containerClassName="rounded-lg"
+                          as="button"
+                          className="dark:bg-slate-800 bg-slate-200 text-slate-900 dark:text-slate-100 flex items-center"
+                        >
+                          <HiViewGridAdd className="text-lg mr-2" /> Details
+                        </HoverBorderGradient>
+                      </a>
                     </div>
                   </div>
-                </ShineBorder>
-                );
-                 })}
+                </div>
+              </ShineBorder>
+            ))}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
 }
-
-export default Project;

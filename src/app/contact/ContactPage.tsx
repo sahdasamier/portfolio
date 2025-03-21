@@ -4,7 +4,7 @@
 import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
 import { AnimatedSubscribeButton } from "@/components/ui/animated-subscribe-button";
 import { Button } from "@/components/ui/moving-border";
-import  contactme from "../../../public/contactme.png";
+import contactme from "@/public/contactme.png";
 import { cn } from "@/lib/utils";
 import { CheckIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
@@ -54,7 +54,7 @@ function Contact() {
               Love to hear from you
             </p>
             <p className="mx-auto max-w-4xl text-center text-base  md:text-xl columns-1">
-            My inbox is always open. Whether you have a new opportunity, a question or just want to say hi, I’ll try my best to get back to you!
+            My inbox is always open. Whether you have a new opportunity, a question or just want to say hi, I'll try my best to get back to you!
             </p>
           </div>
           <div className="mx-auto max-w-7xl">
@@ -90,7 +90,7 @@ function Contact() {
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                 className="hidden w-full rounded-lg object-cover drop-shadow-xl lg:block"
                 src={contactme}
-            
+                priority
               />
             </div>
           </div>

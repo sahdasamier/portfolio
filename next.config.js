@@ -3,6 +3,12 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+      },
+    ],
   },
   eslint: {
     ignoreDuringBuilds: true,
@@ -11,6 +17,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   trailingSlash: false,
+  cleanUrls: true,
   env: {
     NEXT_PUBLIC_FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -21,7 +28,23 @@ const nextConfig = {
     NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL
   },
-  experimental: {}
+  experimental: {
+    appDir: true,
+  },
+  generateStaticParams: async () => {
+    try {
+      const { getProjects } = require('./src/api/getProjects');
+      const { project: projects } = await getProjects();
+      return projects.map((project) => ({
+        params: {
+          id: project.id,
+        },
+      }));
+    } catch (error) {
+      console.error('Error generating static params:', error);
+      return [];
+    }
+  },
 };
 
 module.exports = nextConfig;
