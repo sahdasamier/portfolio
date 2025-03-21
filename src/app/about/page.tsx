@@ -1,48 +1,19 @@
-import { Metadata } from "next";
-import About from "./AboutPage";
-import metaData from "@/data/metadata.json";
-import sia from "../../../public/sia.jpg";
-export const metadata: Metadata = {
-  title: {
-    default: "About",
-    template: `%s - ${"About"}`,
-  },
-  description:
-    "Hi, I'm Sahda Samier, a passionate Web Application Developer from Egypt. I began my journey into web development in 2021, the same year I completed my Bachelors in Business Informatics. Currently, I am pursuing further studies at MBA while continuing to enhance my skills in both front-end and back-end technologies.Over the past few years, I have honed my expertise in Web Application Development, enabling me to build dynamic, responsive websites and applications from the ground up. My skill set spans various programming languages and frameworks, including HTML, CSS, JavaScript, Node.js, React.js, Next.js, MongoDB and more. I am committed to delivering efficient, high-quality solutions that meet the needs of clients and users alike.",
-  keywords: metaData.keywords,
-  openGraph: {
-    title: "About Page",
-    description:
-    "Hi, I'm Sahda Samier, a passionate Web Application Developer from Egypt. I began my journey into web development in 2021, the same year I completed my Bachelors in Business Informatics. Currently, I am pursuing further studies at MBA while continuing to enhance my skills in both front-end and back-end technologies.Over the past few years, I have honed my expertise in Web Application Development, enabling me to build dynamic, responsive websites and applications from the ground up. My skill set spans various programming languages and frameworks, including HTML, CSS, JavaScript, Node.js, React.js, Next.js, MongoDB and more. I am committed to delivering efficient, high-quality solutions that meet the needs of clients and users alike.",
-    images: [
-      {
-        url: metaData.imageOfSia,
+'use client';
 
-        alt: "About Page",
-      },
-    ],
-
-    siteName: "About Page",
-    type: "website",
-  },
-  twitter: {
-    title: "About Page",
-    description:
-      "Hi, I'm Sahda Samier, a passionate Web Application Developer from Rajshahi, Bangladesh. I began my journey into web development in 2021, the same year I completed my Higher Secondary Certificate (HSC). Currently, I am pursuing further studies at Degree College while continuing to enhance my skills in both front-end and back-end technologies.Over the past few years, I have honed my expertise in Web Application Development, enabling me to build dynamic, responsive websites and applications from the ground up. My skill set spans various programming languages and frameworks, including HTML, CSS, JavaScript, Node.js, React.js, Next.js, MongoDB and more. I am committed to delivering efficient, high-quality solutions that meet the needs of clients and users alike.",
-    images: [
-      {
-        url: metaData.imageOfSia,
-
-        alt: "About Page",
-      },
-    ],
-    card: "summary_large_image",
-    site: "@sahda_samier",
-  },
-};
-
-const AboutPage = () => {
-  return <About />;
-};
-
-export default AboutPage;
+export default function AboutPage() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold mb-8">About Me</h1>
+      <div className="prose dark:prose-invert max-w-none">
+        <p className="text-lg mb-4">
+          Hi, I'm Sahda Samier. I'm a passionate developer with experience in web development
+          and a love for creating beautiful, functional applications.
+        </p>
+        <p className="text-lg mb-4">
+          I specialize in modern web technologies including React, Next.js, and TypeScript.
+          I'm always eager to learn new technologies and improve my skills.
+        </p>
+      </div>
+    </div>
+  );
+}

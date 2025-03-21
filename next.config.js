@@ -11,6 +11,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   trailingSlash: true,
+  // Disable 404 page generation since we're handling it client-side
+  skipTrailingSlashRedirect: true
 };
 
 module.exports = nextConfig; 

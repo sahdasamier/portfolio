@@ -1,49 +1,12 @@
-import React from "react";
-import Project from "./ProjectsPage";
-import { Metadata } from "next";
-import metaData from "@/data/metadata.json";
+'use client';
 
-export const metadata: Metadata = {
-  title: {
-    default: "Projects",
-    template: `%s - ${"Projects"}`,
-  },
-  description:
-    "This is my portfolio page. I have a lot of projects that I have worked on. You can find them here. I hope you enjoy your visit.",
-  keywords: metaData.keywords,
-  openGraph: {
-    title: "Project's Page",
-    description:
-      "This is my portfolio page. I have a lot of projects that I have worked on. You can find them here. I hope you enjoy your visit.",
-    images: [
-      {
-        url: metaData.imageOfSia,
-        alt: "Projects Page",
-      },
-    ],
-
-    siteName: "Projects Page",
-    type: "website",
-    url: "https://mdranju.xyz/projects",
-  },
-  twitter: {
-    title: "Projects Page",
-    description:
-      "This is my portfolio page. I have a lot of projects that I have worked on. You can find them here. I hope you enjoy your visit.",
-    images: [
-      {
-        url: metaData.imageOfSia,
-
-        alt: "Projects Page",
-      },
-    ],
-    card: "summary_large_image",
-    site: "@sahda_samier",
-  },
-};
-
-const ProjectPage = () => {
-  return <Project />;
-};
-
-export default ProjectPage;
+export default function ProjectsPage() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold mb-8">My Projects</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Add your project cards here */}
+      </div>
+    </div>
+  );
+}
