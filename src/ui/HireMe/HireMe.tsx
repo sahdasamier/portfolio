@@ -1,5 +1,5 @@
 import { ShinyButton } from "@/components/ui/shiny-button";
-import { TextShimmer } from "@/components/ui/text-shimmer";
+// import { TextShimmer } from "@/components/ui/text-shimmer";
 import Link from "next/link";
 
 export function HireMe() {
@@ -9,12 +9,8 @@ export function HireMe() {
         <h1 className="text-3xl">
           Hire me to build your {""}
           {/* <span className="text-indigo-500">next project</span>! */}
-          <TextShimmer
-            duration={2.5}
-            className="text-3xl font-medium [--base-color:theme(colors.blue.600)] [--base-gradient-color:theme(colors.blue.200)] dark:[--base-color:theme(colors.blue.700)] dark:[--base-gradient-color:theme(colors.blue.400)]"
-          >
+          
             Next Project!
-          </TextShimmer>
         </h1>
         <p className="lg:max-w-2xl lg:px-0 px-3">
           I have a proven track record of delivering high-quality, efficient,
