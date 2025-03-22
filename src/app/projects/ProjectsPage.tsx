@@ -75,84 +75,79 @@ export function ProjectsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-[#020617]">
-      <ScrollProgress />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 pb-10">
-        <div className="relative">
-          <div className="flex flex-col items-center justify-center text-center">
-            <h1 className="text-3xl font-bold sm:text-4xl">Projects</h1>
-            <p className="mt-4 max-w-[85%] leading-normal text-slate-900 dark:text-slate-200 sm:text-lg sm:leading-7">
-              Explore my portfolio of web development projects, showcasing my skills
-              in building modern, responsive, and user-friendly applications.
-            </p>
-            <Meteors number={20} />
-          </div>
-
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {sortedProjects.map((project: Project) => (
-              <ShineBorder key={project.id}>
-                <div className="group relative h-full rounded-xl bg-slate-100 dark:bg-slate-900">
+    <div className="min-h-screen bg-white dark:bg-slate-900/30 transition-colors duration-300">
+      <div className="container mx-auto px-4 py-16">
+        <h1 className="text-4xl font-bold text-center mb-12 text-slate-900 dark:text-white">
+          My Projects
+        </h1>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sortedProjects.map((project: Project) => (
+            <ShineBorder key={project.id}>
+              <div className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden transition-colors duration-300 shadow-lg hover:shadow-xl">
+                <div className="relative aspect-video">
                   <Image
                     src={project.image || "/default-project.png"}
                     alt={project.title}
-                    width={500}
-                    height={300}
-                    className="aspect-video w-full rounded-t-xl object-cover"
-                    priority
+                    fill
+                    className="object-cover"
                   />
-                  <div className="p-4">
-                    <p className="text-sm font-semibold text-slate-500">
-                      {project.category?.toLowerCase() || "uncategorized"}
-                    </p>
-                    <h2 className="mt-2 text-xl font-bold">{project.title}</h2>
-                    <p className="mt-2 line-clamp-3 text-slate-600 dark:text-slate-400">
-                      {project.details}
-                    </p>
-                    
-                    <div className="mt-4 flex flex-col gap-4">
-                      <button
-                        onClick={() => handleViewDetails(project)}
-                        className="w-full"
+                </div>
+
+                <div className="p-4">
+                  <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+                    {project.category?.toLowerCase() || "uncategorized"}
+                  </p>
+                  <h2 className="mt-2 text-xl font-bold text-slate-900 dark:text-white">
+                    {project.title}
+                  </h2>
+                  <p className="mt-2 line-clamp-3 text-slate-700 dark:text-slate-300">
+                    {project.details}
+                  </p>
+                  
+                  <div className="mt-4 flex flex-col gap-4">
+                    <button
+                      onClick={() => handleViewDetails(project)}
+                      className="w-full"
+                    >
+                      <HoverBorderGradient
+                        containerClassName="rounded-lg"
+                        as="div"
+                        className="bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-slate-800 dark:text-slate-100 flex items-center justify-center"
                       >
-                        <HoverBorderGradient
-                          containerClassName="rounded-lg"
-                          as="div"
-                          className="dark:bg-slate-800 bg-slate-200 text-slate-900 dark:text-slate-100 flex items-center justify-center"
-                        >
-                          View Details
-                        </HoverBorderGradient>
-                      </button>
-                      
-                      <div className="flex gap-4">
-                        {project.sourceCode && (
-                          <Link href={project.sourceCode} target="_blank" className="flex-1">
-                            <HoverBorderGradient
-                              containerClassName="rounded-lg"
-                              as="button"
-                              className="dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-100 flex items-center w-full"
-                            >
-                              <FaGithub className="text-lg mr-2" /> GitHub
-                            </HoverBorderGradient>
-                          </Link>
-                        )}
-                        {project.liveLink && (
-                          <Link href={project.liveLink} target="_blank" className="flex-1">
-                            <HoverBorderGradient
-                              containerClassName="rounded-lg"
-                              as="button"
-                              className="dark:bg-indigo-500 bg-indigo-500 text-white flex items-center w-full"
-                            >
-                              <MdOpenInNew className="text-lg mr-2" /> Live
-                            </HoverBorderGradient>
-                          </Link>
-                        )}
-                      </div>
+                        View Details
+                      </HoverBorderGradient>
+                    </button>
+                    
+                    <div className="flex gap-4">
+                      {project.sourceCode && (
+                        <Link href={project.sourceCode} target="_blank" className="flex-1">
+                          <HoverBorderGradient
+                            containerClassName="rounded-lg"
+                            as="button"
+                            className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 hover:bg-slate-200 flex items-center w-full"
+                          >
+                            <FaGithub className="text-lg mr-2" /> GitHub
+                          </HoverBorderGradient>
+                        </Link>
+                      )}
+                      {project.liveLink && (
+                        <Link href={project.liveLink} target="_blank" className="flex-1">
+                          <HoverBorderGradient
+                            containerClassName="rounded-lg"
+                            as="button"
+                            className="bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 flex items-center w-full"
+                          >
+                            <MdOpenInNew className="text-lg mr-2" /> Live
+                          </HoverBorderGradient>
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
-              </ShineBorder>
-            ))}
-          </div>
+              </div>
+            </ShineBorder>
+          ))}
         </div>
       </div>
 
@@ -160,14 +155,14 @@ export function ProjectsPage() {
       {isDetailsOpen && selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div 
-            className="fixed inset-0 bg-black bg-opacity-50"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setIsDetailsOpen(false)}
           />
           
           <div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setIsDetailsOpen(false)}
-              className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              className="absolute right-4 top-4 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors"
             >
               <IoClose size={24} />
             </button>
@@ -181,40 +176,21 @@ export function ProjectsPage() {
                 className="w-full rounded-lg object-cover"
               />
               
-              <div className="mt-4">
-                <p className="text-sm font-semibold text-slate-500">
-                  {selectedProject.category?.toLowerCase() || "uncategorized"}
-                </p>
-                <h3 className="text-2xl font-bold leading-6 text-gray-900 dark:text-white mt-2">
+              <div className="mt-6">
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
                   {selectedProject.title}
-                </h3>
+                </h2>
+                <p className="mt-2 text-slate-700 dark:text-slate-300">
+                  {selectedProject.details}
+                </p>
                 
-                <div className="mt-4">
-                  <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
-                    {selectedProject.details}
-                  </p>
-                </div>
-
-                {selectedProject.tags && selectedProject.tags.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {selectedProject.tags.map((tag, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
                 <div className="mt-6 flex gap-4">
                   {selectedProject.sourceCode && (
                     <Link href={selectedProject.sourceCode} target="_blank" className="flex-1">
                       <HoverBorderGradient
                         containerClassName="rounded-lg"
                         as="button"
-                        className="dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-100 flex items-center w-full"
+                        className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 flex items-center w-full"
                       >
                         <FaGithub className="text-lg mr-2" /> GitHub
                       </HoverBorderGradient>
@@ -225,7 +201,7 @@ export function ProjectsPage() {
                       <HoverBorderGradient
                         containerClassName="rounded-lg"
                         as="button"
-                        className="dark:bg-indigo-500 bg-indigo-500 text-white flex items-center w-full"
+                        className="bg-indigo-500 text-white flex items-center w-full"
                       >
                         <MdOpenInNew className="text-lg mr-2" /> Live Demo
                       </HoverBorderGradient>
