@@ -7,4 +7,4 @@ export default function Page() {
 }
 
 // Enable static generation
-export const dynamic = 'force-static';
+export const dynamic = 'force-static'; 

@@ -1,5 +1,4 @@
 import { BoxReveal } from '@/components/ui/box-reveal';
-import Sia from "../../public/sia.jpg";
 import { ShinyButton } from '@/components/ui/shiny-button';
 import Image from "next/image";
 import Link from "next/link";
@@ -20,12 +19,14 @@ export const ContentUs = () => {
           <path d="M50 0H100L50 100H0L50 0Z" />
         </svg>
         <Image
-          width={500}
-          height={500}
+          width={1200}
+          height={800}
           className="object-cover z-50 overflow-hidden w-full h-56 rounded-xl shadow-lg lg:shadow-none md:h-96 lg:h-full"
-          placeholder="blur"
-          src={Sia}
+          src="/sia.jpg"
           alt="Sia Images"
+          priority
+          quality={100}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
 
