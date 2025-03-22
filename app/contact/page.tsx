@@ -1,7 +1,7 @@
 'use client';
 
-import { ContactPage } from '@/app/ui/ContactPage';
+import { ContactUs } from "@/ui/ContactUs";
 
 export default function Contact() {
-  return <ContactPage />;
+  return <ContactUs />;
 } 

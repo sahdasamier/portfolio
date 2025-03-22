@@ -1,4 +1,4 @@
-import { db } from "../firebase/config"; // Use relative import paths
+import { db } from "../lib/firebase/config"; // Use correct import path
 import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 
 async function fixMissingFields() {

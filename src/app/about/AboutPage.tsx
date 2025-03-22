@@ -8,7 +8,7 @@ import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-w
 import SplashCursor from "@/components/ui/SplashCursor";
 
 
-function About() {
+export function AboutPage() {
   return (
     <>
       <SplashCursor />
@@ -23,5 +23,3 @@ function About() {
     </>
   );
 }
-
-export default About;

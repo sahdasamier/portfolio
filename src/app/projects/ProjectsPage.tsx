@@ -1,27 +1,21 @@
 "use client";
-import { getProjects, Project } from "@/src/api/getProjects";
-import { createProjectLink } from "@/src/lib/firebase/dynamicLinks";
-import ShineBorder from "@/src/components/ui/shine-border";
-import SkeletonUI from "@/src/ui/SkeletonUI";
+import { getProjects, Project } from "@/api/getProjects";
+import ShineBorder from "@/components/ui/shine-border";
+import SkeletonUI from "@/ui/SkeletonUI";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa6";
-import { HiViewGridAdd } from "react-icons/hi";
 import { MdOpenInNew } from "react-icons/md";
-import { HoverBorderGradient } from "@/src/components/ui/hover-border-gradient";
-import Meteors from "@/src/components/ui/meteors";
-import ScrollProgress from "@/src/components/ui/scroll-progress";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import Meteors from "@/components/ui/meteors";
+import ScrollProgress from "@/components/ui/scroll-progress";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { IoClose } from "react-icons/io5";
 
-interface ProjectsPageProps {
-  projects: Project[];
-}
-
-export default function ProjectsPage({ projects }: ProjectsPageProps) {
-  const router = useRouter();
-  const [projectLinks, setProjectLinks] = useState<Record<string, string>>({});
+export function ProjectsPage() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["projects"],
     queryFn: getProjects,
@@ -29,32 +23,10 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
     retry: 3,
   });
 
-  useEffect(() => {
-    // Log any errors for debugging
-    if (isError) {
-      console.error("Error fetching projects:", error);
-    }
-  }, [isError, error]);
-
-  useEffect(() => {
-    async function generateProjectLinks() {
-      if (data?.project) {
-        const links: Record<string, string> = {};
-        for (const project of data.project) {
-          try {
-            const link = await createProjectLink(project.id);
-            links[project.id] = link;
-          } catch (error) {
-            console.error(`Error generating link for project ${project.id}:`, error);
-            links[project.id] = `/projects/${project.id}`;
-          }
-        }
-        setProjectLinks(links);
-      }
-    }
-
-    generateProjectLinks();
-  }, [data?.project]);
+  const handleViewDetails = (project: Project) => {
+    setSelectedProject(project);
+    setIsDetailsOpen(true);
+  };
 
   if (isLoading) {
     return <SkeletonUI />;
@@ -102,10 +74,6 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
     );
   }
 
-  const handleDetailsClick = (projectId: string) => {
-    window.location.href = `/projects/${projectId}`;
-  };
-
   return (
     <div className="min-h-screen bg-slate-100 dark:bg-[#020617]">
       <ScrollProgress />
@@ -134,51 +102,51 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
                   />
                   <div className="p-4">
                     <p className="text-sm font-semibold text-slate-500">
-                      #{project.category?.toLowerCase() || "uncategorized"}
+                      {project.category?.toLowerCase() || "uncategorized"}
                     </p>
                     <h2 className="mt-2 text-xl font-bold">{project.title}</h2>
                     <p className="mt-2 line-clamp-3 text-slate-600 dark:text-slate-400">
                       {project.details}
                     </p>
                     
-                    <div className="mt-4 flex gap-4">
-                      {project.sourceCode && (
-                        <Link href={project.sourceCode} target="_blank">
-                          <HoverBorderGradient
-                            containerClassName="rounded-lg"
-                            as="button"
-                            className="dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-100 flex items-center"
-                          >
-                            <FaGithub className="text-lg mr-2" /> GitHub
-                          </HoverBorderGradient>
-                        </Link>
-                      )}
-                      {project.liveLink && (
-                        <Link href={project.liveLink} target="_blank">
-                          <HoverBorderGradient
-                            containerClassName="rounded-lg"
-                            as="button"
-                            className="dark:bg-indigo-500 bg-indigo-500 text-white flex items-center"
-                          >
-                            <MdOpenInNew className="text-lg mr-2" /> Live
-                          </HoverBorderGradient>
-                        </Link>
-                      )}
-                      <a
-                        href={`/projects/${project.id}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleDetailsClick(project.id);
-                        }}
+                    <div className="mt-4 flex flex-col gap-4">
+                      <button
+                        onClick={() => handleViewDetails(project)}
+                        className="w-full"
                       >
                         <HoverBorderGradient
                           containerClassName="rounded-lg"
-                          as="button"
-                          className="dark:bg-slate-800 bg-slate-200 text-slate-900 dark:text-slate-100 flex items-center"
+                          as="div"
+                          className="dark:bg-slate-800 bg-slate-200 text-slate-900 dark:text-slate-100 flex items-center justify-center"
                         >
-                          <HiViewGridAdd className="text-lg mr-2" /> Details
+                          View Details
                         </HoverBorderGradient>
-                      </a>
+                      </button>
+                      
+                      <div className="flex gap-4">
+                        {project.sourceCode && (
+                          <Link href={project.sourceCode} target="_blank" className="flex-1">
+                            <HoverBorderGradient
+                              containerClassName="rounded-lg"
+                              as="button"
+                              className="dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-100 flex items-center w-full"
+                            >
+                              <FaGithub className="text-lg mr-2" /> GitHub
+                            </HoverBorderGradient>
+                          </Link>
+                        )}
+                        {project.liveLink && (
+                          <Link href={project.liveLink} target="_blank" className="flex-1">
+                            <HoverBorderGradient
+                              containerClassName="rounded-lg"
+                              as="button"
+                              className="dark:bg-indigo-500 bg-indigo-500 text-white flex items-center w-full"
+                            >
+                              <MdOpenInNew className="text-lg mr-2" /> Live
+                            </HoverBorderGradient>
+                          </Link>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -187,6 +155,88 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
           </div>
         </div>
       </div>
+
+      {/* Project Details Popup */}
+      {isDetailsOpen && selectedProject && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50"
+            onClick={() => setIsDetailsOpen(false)}
+          />
+          
+          <div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setIsDetailsOpen(false)}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            >
+              <IoClose size={24} />
+            </button>
+
+            <div className="p-6">
+              <Image
+                src={selectedProject.image || "/default-project.png"}
+                alt={selectedProject.title}
+                width={800}
+                height={400}
+                className="w-full rounded-lg object-cover"
+              />
+              
+              <div className="mt-4">
+                <p className="text-sm font-semibold text-slate-500">
+                  {selectedProject.category?.toLowerCase() || "uncategorized"}
+                </p>
+                <h3 className="text-2xl font-bold leading-6 text-gray-900 dark:text-white mt-2">
+                  {selectedProject.title}
+                </h3>
+                
+                <div className="mt-4">
+                  <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+                    {selectedProject.details}
+                  </p>
+                </div>
+
+                {selectedProject.tags && selectedProject.tags.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {selectedProject.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <div className="mt-6 flex gap-4">
+                  {selectedProject.sourceCode && (
+                    <Link href={selectedProject.sourceCode} target="_blank" className="flex-1">
+                      <HoverBorderGradient
+                        containerClassName="rounded-lg"
+                        as="button"
+                        className="dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-100 flex items-center w-full"
+                      >
+                        <FaGithub className="text-lg mr-2" /> GitHub
+                      </HoverBorderGradient>
+                    </Link>
+                  )}
+                  {selectedProject.liveLink && (
+                    <Link href={selectedProject.liveLink} target="_blank" className="flex-1">
+                      <HoverBorderGradient
+                        containerClassName="rounded-lg"
+                        as="button"
+                        className="dark:bg-indigo-500 bg-indigo-500 text-white flex items-center w-full"
+                      >
+                        <MdOpenInNew className="text-lg mr-2" /> Live Demo
+                      </HoverBorderGradient>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,7 +1,8 @@
+"use client";
 import React from "react";
 import { useId } from "react";
 
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/lib/utils";
 
 interface GridPatternProps {
   width?: number;

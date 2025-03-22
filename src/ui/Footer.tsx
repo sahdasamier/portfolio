@@ -4,7 +4,7 @@ import Link from "next/link";
 const date = new Date();
 let year = date.getFullYear();
 
-function Footer() {
+export function Footer() {
   return (
     <footer className="w-full pt-5 p-2  bg-slate-100 dark:bg-[#020617] sticky top-[100vh]">
       {/* <hr className="my-4" /> */}
@@ -86,5 +86,3 @@ c25 -5 62 -24 83 -40 l38 -31 122 32 c156 41 364 52 492 26 205 -42 374 -172
     </footer>
   );
 }
-
-export default Footer;

@@ -1,5 +1,5 @@
 "use client";
-import { ModeToggle } from '@/src/components/ui/ModeToggle';
+import { ModeToggle } from "@/components/ui/ModeToggle";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -30,7 +30,7 @@ const menuItems: MenuItem[] = [
   },
 ];
 
-function Navbar() {
+export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
@@ -112,5 +112,3 @@ function Navbar() {
     </motion.header>
   );
 }
-
-export default Navbar;

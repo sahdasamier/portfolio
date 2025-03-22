@@ -6,7 +6,7 @@ import {
   type AnimationProps,
   type HTMLMotionProps,
 } from "framer-motion";
-import { cn } from '@/src/lib/utils';
+import { cn } from "@/lib/utils";
 
 const animationProps = {
   initial: { "--x": "100%", scale: 0.8 },
@@ -70,4 +70,4 @@ const ShinyButton = React.forwardRef<HTMLButtonElement, ShinyButtonProps>(
 
 ShinyButton.displayName = "ShinyButton";
 
-export default ShinyButton;
+export { ShinyButton };

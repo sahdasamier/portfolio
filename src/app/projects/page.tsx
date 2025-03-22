@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { ProjectsPage } from './ProjectsPage';
 import { Suspense } from "react";
-import SkeletonUI from "@/src/ui/SkeletonUI";
+import SkeletonUI from "@/ui/SkeletonUI";
 
 export const metadata: Metadata = {
   title: "Projects",

@@ -1,9 +1,9 @@
-import BoxReveal from '@/src/components/ui/box-reveal';
+import { BoxReveal } from '@/components/ui/box-reveal';
 import Sia from "../../public/sia.jpg";
-import ShinyButton from '@/src/components/ui/shiny-button';
+import { ShinyButton } from '@/components/ui/shiny-button';
 import Image from "next/image";
 import Link from "next/link";
-import { BackgroundBeams } from '@/src/components/ui/background-beams';
+import { BackgroundBeams } from '@/components/ui/background-beams';
 
 /* eslint-disable react/no-unescaped-entities */
 export const ContentUs = () => {

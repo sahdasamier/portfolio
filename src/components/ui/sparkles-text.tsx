@@ -3,7 +3,7 @@
 import { CSSProperties, ReactElement, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import { cn } from '@/src/lib/utils';
+import { cn } from "@/lib/utils";
 
 interface Sparkle {
   id: string;
@@ -149,4 +149,4 @@ const Sparkle: React.FC<Sparkle> = ({ id, x, y, color, delay, scale }) => {
   );
 };
 
-export default SparklesText;
+export { SparklesText };

@@ -2,11 +2,10 @@
 
 import { createContext, useContext, ReactNode, useEffect, useState } from 'react';
 import { User, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
-import { auth, googleProvider } from '@/src/lib/firebase/config';
+import { auth, googleProvider, app } from '@/lib/firebase/config';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ThemeProvider } from '@/src/components/ui/theme-provider';
+import { ThemeProvider } from '@/components/ui/theme-provider';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { app } from '@/src/lib/firebase/config';
 
 interface AuthContextType {
   user: User | null;

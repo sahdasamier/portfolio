@@ -1,7 +1,8 @@
-import ShinyButton from '@/src/components/ui/shiny-button';
-import { TextShimmer } from '@/src/components/ui/text-shimmer';
+import { ShinyButton } from "@/components/ui/shiny-button";
+import { TextShimmer } from "@/components/ui/text-shimmer";
 import Link from "next/link";
-const HireMe = () => {
+
+export function HireMe() {
   return (
     <section className="relative  py-16 dark:bg-slate-900/30 bg-gray-100/40">
       <div className="flex flex-col text-center items-center justify-center space-y-3 ">
@@ -25,6 +26,4 @@ const HireMe = () => {
       </div>
     </section>
   );
-};
-
-export default HireMe;
+}

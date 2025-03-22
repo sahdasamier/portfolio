@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./components/Providers";
-import Navbar from "@/src/ui/Navbar";
-import Footer from "@/src/ui/Footer";
-import metaData from "@/src/data/metadata.json";
+import { Navbar } from "@/ui/Navbar";
+import { Footer } from "@/ui/Footer";
+import metaData from "@/data/metadata.json";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ScrollToTop from "@/src/utils/ScrollToTop/ScrollToTop";
+import ScrollToTop from "@/utils/ScrollToTop/ScrollToTop";
 
 const inter = Inter({ subsets: ["latin"] });
 

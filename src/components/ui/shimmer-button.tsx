@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 
-import { cn } from '@/src/lib/utils';
+import { cn } from "@/lib/utils";
 
 export interface ShimmerButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -93,4 +93,4 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
 
 ShimmerButton.displayName = "ShimmerButton";
 
-export default ShimmerButton;
+export { ShimmerButton };

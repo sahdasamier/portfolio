@@ -1,6 +1,6 @@
 import { FeatureThree } from "@/ui/FeatureThree";
-import HeroSection from "@/ui/HeroSection";
-import HireMe from "@/ui/HireMe/HireMe";
+import { HeroSection } from "@/ui/HeroSection";
+import { HireMe } from "@/ui/HireMe/HireMe";
 import { Projects } from "@/ui/Projects";
 import { Metadata } from "next";
 import metaData from "@/data/metadata.json";

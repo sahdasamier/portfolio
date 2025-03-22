@@ -13,7 +13,7 @@ import { FaLocationDot, FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { toast } from "react-toastify";
 
-function Contact() {
+export function ContactPage() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -99,5 +99,3 @@ function Contact() {
     </>
   );
 }
-
-export default Contact;

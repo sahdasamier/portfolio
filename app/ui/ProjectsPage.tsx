@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { HiViewGridAdd } from 'react-icons/hi';
 import { MdOpenInNew } from 'react-icons/md';
-import { HoverBorderGradient } from '@/src/components/ui/hover-border-gradient';
-import { getProjects } from '@/src/api/getProjects';
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { getProjects } from "@/api/getProjects";
 import { useQuery } from '@tanstack/react-query';
 
 interface Project {

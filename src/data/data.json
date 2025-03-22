@@ -1,83 +1,91 @@
 [
+  
   {
-    "category": "e-commerce-api",
-    "title": "This e-commerce API is real-live backend api for e-commerce website real live experience",
-    "image": "https://res.cloudinary.com/nodelove/image/upload/f_auto,q_auto/v1/portfolio/vvaxvdooda4j6rffkipw",
-    "details": "The repository you've linked to is titled 'e-commerce-api' and is authored by Sahda Samier. It appears to be a project related to e-commerce, possibly an API (Application Programming Interface) for facilitating e-commerce operations. However, without diving into the code, it's challenging to provide specifics on its functionality, features, or quality.",
+    "category": "Linked Trust",
+    "title": "Linked Trust - A Decentralized Opinion Platform",
+    "image": "Trustclaim.png",
+    "details": "Led the development of a decentralized platform where users express opinions through claims, fostering collaborative discourse within interconnected nodes.",
+    "liveLink": "https://live.linkedtrust.us/feed",
+    "author": "Sahda Samier",
+    "sourceCode": "https://github.com/Whats-Cookin/trust_claim",
+    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    "technologies": ["TypeScript", "React", "MUI", "Node.js", "Express.js"]
+  },
+  {
+    "category": "healthcare-system",
+    "title": "Magdi Yacoub Heart Foundation - Hospital Management System",
+    "image": "MagdyYacob.png",
+    "details": "Contributed to developing a hospital registration and patient management system to enhance healthcare administration.",
+    "liveLink": "https://www.myf-egypt.org/donation/",
+    "author": "Sahda Samier",
+    "sourceCode": "https://github.com/AHC-APPS/observership/",
+    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    "technologies": ["TypeScript", "Next.js", "UI/UX Design", "Figma", "MUI"]
+  },
+  {
+    "category": "decentralized-social",
+    "title": "Decentralized LinkedIn - A Web3 Professional Network",
+    "image": "Decentralize.png",
+    "details": "Developed a decentralized professional network allowing users to showcase portfolios, connect, and receive evaluations.",
     "liveLink": "",
     "author": "Sahda Samier",
-    "sourceCode": "https://github.com/Sahdasamier/e-commerce-api",
-    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg"
+    "sourceCode": "https://github.com/Whats-Cookin/decentralized_linkedin",
+    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    "technologies": ["TypeScript", "React", "MUI","Figma"]
   },
   {
-    "category": "blog-api-2023",
-    "title": "Blog API real-live experience",
-    "image": "https://res.cloudinary.com/nodelove/image/upload/f_auto,q_auto/v1/portfolio/dtisolpag6fknzzdiqmv",
-    "details": "Blog API real-live experience. You can use API for your blog website.",
-    "liveLink": "https://blog-api-2023.onrender.com/api/v1/articles",
+    "category": "What's Cookin'",
+    "title": "What's Cookin' - A Decentralized Ecosystem",
+    "image": "What's Cookin'.png",
+    "details": "As a front-end developer, I contributed to the development of this decentralized ecosystem by resolving bugs and implementing new features to enhance the user experience.",
+    "liveLink": "https://www.whatscookin.us/",
     "author": "Sahda Samier",
-    "sourceCode": "https://github.com/Sahdasamier/blog-api-2023",
-    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg"
+    "sourceCode": "https://github.com/Whats-Cookin/whats-cookin-v1.1/",
+    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    "technologies": ["JavaScript", "React", "MUI", "Node.js", "Express.js"]
   },
   {
-    "category": "portfolio-landing-page",
-    "title": "Portfolio landing page design made in ony HTML and CSS",
-    "image": "https://res.cloudinary.com/nodelove/image/upload/v1722023612/portfolio/f2bjcq5erkwdtyopkkpp.png",
-    "details": "This Portfolio landing page is not reresponsive for mobile devices and any other devices, like laptop or tablet. reresponsiveness add will very soon.",
-    "liveLink": "https://Sahdasamier.github.io/Batch10-Assignment-1",
+    "category": "game-development",
+    "title": "Tic Tac Toe - Multiplayer Game",
+    "image": "tic_tac_toe.png",
+    "details": "Developed a web-based Tic Tac Toe game with multiplayer and AI opponent functionality.",
+    "liveLink": "https://tic-tac-toe-game-tawny.vercel.app/",
     "author": "Sahda Samier",
-    "sourceCode": "https://github.com/Sahdasamier/Batch10-Assignment-1",
-    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg"
+    "sourceCode": "https://github.com/sahdasamier/tic-tac-toe",
+    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    "technologies": [ "JavaScript", "React" ,"vercel"]
   },
   {
-    "category": "E-commerce add-to-cart",
-    "title": "Real live e-commerce add-to-cart feature",
-    "image": "https://res.cloudinary.com/nodelove/image/upload/f_auto,q_auto/v1/portfolio/sshlc1cgothvu1efxjq0",
-    "details": "This design is bootstrap components design copy from bootstrap website",
-    "liveLink": "https://add-to-cart-2023.onrender.com/api/v1/products",
+    "category": "social-media",
+    "title": "In Symphony - Social Media Platform",
+    "image": "share posts.png",
+    "details": "Developed a social media application that allows users to create, like, and remove posts.",
+    "liveLink": "https://share-your-plogs.vercel.app/",
     "author": "Sahda Samier",
-    "sourceCode": "https://github.com/Sahdasamier/add-to-cart",
-    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg"
+    "sourceCode": "https://github.com/sahdasamier/Launching-a-post.git",
+    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    "technologies": [ "JavaScript", "Redux", "React"]
   },
   {
-    "category": "Link Shortener",
-    "title": "Lifetime URL live LINK-SHORTENER",
-    "image": "https://res.cloudinary.com/nodelove/image/upload/f_auto,q_auto/v1/portfolio/qfecagwborh8l70xpmwi",
-    "details": "I design and develop services online stores",
-    "liveLink": "https://url-shortner-hhy9.onrender.com/",
-    "sourceCode": "https://github.com/Sahdasamier/url-shortner",
+    "category": "task-management",
+    "title": "Task Canvas - To-Do List Application",
+    "image": "todolist3.png",
+    "details": "Developed a to-do list application with task organization into completed, uncompleted, and all tabs.",
+    "liveLink": "https://to-control-the-tabs.vercel.app/",
     "author": "Sahda Samier",
-    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg"
+    "sourceCode": "https://github.com/sahdasamier/to-control-the-tabs",
+    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    "technologies": [ "JavaScript", "React"]
   },
   {
-    "category": "Portfolio-Website",
-    "title": "My Portfolio website made by next.js",
-    "image": "https://res.cloudinary.com/nodelove/image/upload/f_auto,q_auto/v1/portfolio/vgpapyaihzee4nyzmgp9",
-    "details": "Portfolio website made by next.js and ui design is tailwindcss, shadcnui and devui components",
-    "liveLink": "https://Sahdasamier.vercel.app/",
+    "category": "blog-platform",
+    "title": "Quill Quotient - Blogging Platform",
+    "image": "share plogs.png",
+    "details": "Developed a blogging platform where users can create and publish blog posts.",
+    "liveLink": "https://to-do-blog.vercel.app/",
     "author": "Sahda Samier",
-    "sourceCode": "https://github.com/Sahdasamier/portfolio-nextjs",
-    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg"
-  },
-
-  {
-    "category": "E-commerce frontend",
-    "title": " Frontend Template",
-    "image": "https://res.cloudinary.com/nodelove/image/upload/f_auto,q_auto/v1/portfolio/waggkpjhyk8lzfccnxcu",
-    "details": " This project is demo for practice this Template is download from themeForest it's a paid Template I'm Download nulled version",
-    "liveLink": "",
-    "author": "Sahda Samier",
-    "sourceCode": "https://github.com/Sahdasamier/raj-tshirt",
-    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg"
-  },
-  {
-    "category": "E-commerce dashboard",
-    "title": "Backend Dashboard",
-    "image": "https://res.cloudinary.com/nodelove/image/upload/f_auto,q_auto/v1/portfolio/hh9rqwotpl7f75dyyfgu",
-    "details": "This project is demo for practice this Template is download from themeForest it's a paid Template I' Download nulled version",
-    "author": "Sahda Samier",
-    "liveLink": "",
-    "sourceCode": "https://github.com/Sahdasamier/dashboard-raj-tshirt",
-    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg"
+    "sourceCode": "https://github.com/sahdasamier/TO-DO-BLOG.git",
+    "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    "technologies": ["JavaScript", "React"]
   }
 ]

@@ -1,6 +1,6 @@
 'use client';
 
-import { ProjectsPage } from '@/app/ui/ProjectsPage';
+import { ProjectsPage } from "@/ui/Projects";
 
 export default function Projects() {
   return <ProjectsPage />;

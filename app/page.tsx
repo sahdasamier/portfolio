@@ -1,9 +1,9 @@
-import { FeatureThree } from '@/src/ui/FeatureThree';
-import HeroSection from '@/src/ui/HeroSection';
-import HireMe from '@/src/ui/HireMe/HireMe';
-import { Projects } from '@/src/ui/Projects';
+import { FeatureThree } from "@/ui/FeatureThree";
+import { HeroSection } from "@/ui/HeroSection";
+import { HireMe } from "@/ui/HireMe/HireMe";
+import { Projects } from "@/ui/Projects";
 import { Metadata } from 'next';
-import metaData from '@/src/data/metadata.json';
+import metaData from "@/data/metadata.json";
 
 export const metadata: Metadata = {
   title: metaData.title,

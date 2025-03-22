@@ -1,9 +1,9 @@
 "use client";
 import { useTheme } from "next-themes";
-import { MagicCard } from '@/src/components/ui/magic-card';
-import { BorderBeam } from '@/src/components/ui/border-beam';
+import { MagicCard } from "@/components/ui/magic-card";
+import { BorderBeam } from "@/components/ui/border-beam";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import { cn } from '@/src/lib/utils';
+import { cn } from "@/lib/utils";
 
 /* eslint-disable react/no-unescaped-entities */
 
