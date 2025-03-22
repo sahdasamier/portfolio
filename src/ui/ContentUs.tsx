@@ -21,7 +21,7 @@ export const ContentUs = () => {
         <Image
           width={1200}
           height={800}
-          className="object-cover z-50 overflow-hidden w-full h-56 rounded-xl shadow-lg lg:shadow-none md:h-96 lg:h-full"
+          className="object-cover object-[center_30%] lg:object-center z-50 overflow-hidden w-full h-56 rounded-xl shadow-lg lg:shadow-none md:h-96 lg:h-full"
           src="/sia.jpg"
           alt="Sia Images"
           priority
