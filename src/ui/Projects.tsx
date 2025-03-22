@@ -8,12 +8,18 @@ import { FaGithub } from "react-icons/fa6";
 import { HiViewGridAdd } from "react-icons/hi";
 import { MdOpenInNew } from "react-icons/md";
 import SkeletonUI2 from "./SkeletonUI2";
-
+import CountUp from 'react-countup';
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { BackgroundBeams } from '@/components/ui/background-beams';
+import { BoxReveal } from '@/components/ui/box-reveal';
 
-export function Projects() {
+interface ProjectsProps {
+  showAll?: boolean;
+}
+
+export function Projects({ showAll = false }: ProjectsProps) {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const { data, isLoading, isError, error } = useQuery({
@@ -56,16 +62,23 @@ export function Projects() {
     return indexA - indexB;
   }) || [];
 
-  const post = sortedProjects.slice(0, 6);
+  const displayedProjects = showAll ? sortedProjects : sortedProjects.slice(0, 6);
 
   return (
-    <div className="bg-slate-100 dark:bg-[#020617]">
+    <div className="relative flex flex-col-reverse rounded-xl py-16 my-20 pt-20 lg:dark:bg-slate-900 lg:bg-slate-50 lg:pt-0 lg:flex-col lg:pb-0">
+      <BackgroundBeams />
       <div className="max-w-7xl mx-auto py-20 flex flex-col items-center justify-center px-4 lg:px-6">
-        <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 from-10% via-violet-500 via-30% to-sky-500 to-90%">
-          My Projects
-        </h2>
-        <p className="mt-4 text-base leading-relaxed">
-          Here are some of my projects I have done.
+        <BoxReveal boxColor={"#6366f1"} duration={0.5}>
+          <h2 className="text-[2rem] font-semibold rounded-lg text-slate-900 dark:text-white">
+            My Projects<span className="text-indigo-600 dark:text-indigo-400">.</span>
+          </h2>
+        </BoxReveal>
+        <p className="mt-4 text-base leading-relaxed text-slate-800 dark:text-slate-300">
+          Here is some kind of{" "}
+          <span className="text-xl font-bold md:text-2xl text-indigo-600 dark:text-indigo-400">
+            <CountUp end={sortedProjects.length} duration={2.5} />
+          </span>{" "}
+          project's I have finished.
         </p>
 
         {isLoading ? (
@@ -79,7 +92,7 @@ export function Projects() {
           </div>
         ) : (
           <div className="grid gap-6 py-6 md:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl mx-auto">
-            {post.map((post: any) => (
+            {displayedProjects.map((post: any) => (
               <div
                 key={post?.id}
                 className="group relative border rounded-xl dark:bg-slate-900 bg-slate-100 shadow-md"
@@ -154,11 +167,13 @@ export function Projects() {
           </div>
         )}
 
-        <div className="flex justify-center items-center text-center">
-          <Link href="/projects">
-            <RainbowButton>More Projects</RainbowButton>
-          </Link>
-        </div>
+        {!showAll && sortedProjects.length > 6 && (
+          <div className="flex justify-center items-center text-center mt-8">
+            <Link href="/projects">
+              <RainbowButton>See More Projects</RainbowButton>
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Project Details Modal */}
@@ -185,41 +200,21 @@ export function Projects() {
                 height={400}
                 className="w-full rounded-lg object-cover"
               />
-              
-              <div className="mt-4">
-                <p className="text-sm font-semibold text-slate-500">
-                  {selectedProject.category?.toLowerCase() || "uncategorized"}
-                </p>
-                <h3 className="text-2xl font-bold leading-6 text-gray-900 dark:text-white mt-2">
+              <div className="mt-6">
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
                   {selectedProject.title}
-                </h3>
+                </h2>
+                <p className="mt-2 text-slate-700 dark:text-slate-300">
+                  {selectedProject.details}
+                </p>
                 
-                <div className="mt-4">
-                  <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
-                    {selectedProject.details}
-                  </p>
-                </div>
-
-                {selectedProject.tags && selectedProject.tags.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {selectedProject.tags.map((tag: string, index: number) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
                 <div className="mt-6 flex gap-4">
                   {selectedProject.sourceCode && (
                     <Link href={selectedProject.sourceCode} target="_blank" className="flex-1">
                       <HoverBorderGradient
                         containerClassName="rounded-lg"
                         as="button"
-                        className="dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-100 flex items-center w-full"
+                        className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 flex items-center w-full"
                       >
                         <FaGithub className="text-lg mr-2" /> GitHub
                       </HoverBorderGradient>
@@ -230,7 +225,7 @@ export function Projects() {
                       <HoverBorderGradient
                         containerClassName="rounded-lg"
                         as="button"
-                        className="dark:bg-indigo-500 bg-indigo-500 text-white flex items-center w-full"
+                        className="bg-indigo-500 text-white flex items-center w-full"
                       >
                         <MdOpenInNew className="text-lg mr-2" /> Live Demo
                       </HoverBorderGradient>
@@ -247,5 +242,5 @@ export function Projects() {
 }
 
 export function ProjectsPage() {
-  return <Projects />;
+  return <Projects showAll={true} />;
 }

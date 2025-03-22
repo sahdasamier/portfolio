@@ -34,6 +34,9 @@ cp out/index.html out/500.html
 # Copy index.html to projects directory for client-side routing
 cp out/index.html out/projects/index.html
 
+# Copy _next directory to projects directory for assets
+cp -r out/_next out/projects/
+
 # Deploy to Firebase
 echo "Deploying to Firebase..."
 firebase deploy --only hosting

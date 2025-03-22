@@ -1,9 +1,9 @@
 'use client';
 
-import { AboutPage } from './AboutPage';
+import { ContentUs } from "@/ui/ContentUs";
 
 export default function Page() {
-  return <AboutPage />;
+  return <ContentUs />;
 }
 
 // Enable static generation
