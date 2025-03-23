@@ -127,7 +127,7 @@ export function Projects({ showAll = false }: ProjectsProps) {
                   <div className="mt-4 flex lg:space-x-3 space-x-2 p-3">
                     <Image
                       className="h-full lg:w-10 w-8 rounded-lg"
-                      src={post?.avatar ? (post.avatar.startsWith('/') ? post.avatar : `/${post.avatar}`) : "/default-avatar.png"}
+                      src="/sia.jpg"
                       width={500}
                       height={500}
                       blurDataURL="blur"
