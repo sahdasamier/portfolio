@@ -101,49 +101,64 @@ export function Projects({ showAll = false }: ProjectsProps) {
           <div className="grid gap-6 py-6 md:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl mx-auto">
             {displayedProjects.map((post: any) => (
               <ShineBorder key={post?.id}>
-                <div className="group relative border rounded-xl dark:bg-slate-900 bg-slate-100 shadow-md">
-                  <Image
-                    src={(post?.image ? (post.image.startsWith('/') ? post.image : `/${post.image}`) : "/default-project.png")}
-                    className="aspect-video w-full rounded-t-xl"
-                    width={700}
-                    height={500}
-                    blurDataURL="blur"
-                    placeholder="blur"
-                    alt={post?.title || "Project image"}
-                  />
-                  <div className="min-h-min p-3">
-                    #{post.category?.toLocaleLowerCase() || "uncategorized"}
-                    <p className="mt-4 flex-1 text-base font-semibold" title={post?.title}>
-                      {post.title?.length > 40
-                        ? post.title.substring(0, 38).concat("...")
-                        : post.title || "Untitled Project"}
-                    </p>
-                    <p className="mt-2 w-full text-sm leading-normal" title={post?.details}>
-                      {post.details?.length > 150
-                        ? post.details.substring(0, 150).concat("...")
-                        : post.details || "No description"}
-                    </p>
-                  </div>
-                  <div className="mt-4 flex lg:space-x-3 space-x-2 p-3">
+                <div className="group relative border rounded-xl dark:bg-slate-900 bg-slate-100 shadow-md h-full flex flex-col">
+                  <div className="relative aspect-video overflow-hidden">
                     <Image
-                      className="h-full lg:w-10 w-8 rounded-lg"
-                      src="/sia.jpg"
-                      width={500}
+                      src={(post?.image ? (post.image.startsWith('/') ? post.image : `/${post.image}`) : "/default-project.png")}
+                      className="w-full h-full object-cover rounded-t-xl transform group-hover:scale-105 transition-transform duration-300"
+                      width={700}
                       height={500}
                       blurDataURL="blur"
                       placeholder="blur"
-                      alt={post?.author || "Author"}
+                      alt={post?.title || "Project image"}
                     />
-                    <div>
-                      <p className="text-xs font-semibold leading-tight">
-                        {post?.author || "Anonymous"}
-                      </p>
-                      <span className="text-xs leading-tight">
-                        Added: {format(new Date(post?.createdAt), "dd/MM/yyyy")}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  <div className="flex flex-col flex-grow p-3">
+                    <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
+                      #{post.category?.toLocaleLowerCase() || "uncategorized"}
+                    </span>
+                    <p className="mt-2 text-base font-semibold line-clamp-1" title={post?.title}>
+                      {post.title || "Untitled Project"}
+                    </p>
+                    <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 line-clamp-2" title={post?.details}>
+                      {post.details || "No description"}
+                    </p>
+                    {post?.technologies && post.technologies.length > 0 && (
+                      <div className="mt-4">
+                        <h3 className="text-sm font-semibold mb-2 text-slate-700 dark:text-slate-300">Skills:</h3>
+                        <div className="flex flex-wrap gap-2">
+                          {post.technologies.map((tech: string, index: number) => (
+                            <span
+                              key={index}
+                              className="px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-full border border-slate-200 dark:border-slate-700"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="mt-auto flex items-center p-3 border-t border-slate-200 dark:border-slate-700">
+                    <div className="flex items-center space-x-3">
+                      <div className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700">
+                        <Image
+                          className="object-cover"
+                          src="/sia.jpg"
+                          width={40}
+                          height={40}
+                          blurDataURL="blur"
+                          placeholder="blur"
+                          alt="Sia.Samier"
+                        />
+                      </div>
+                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                        Sia.Samier
                       </span>
                     </div>
 
-                    <div>
+                    <div className="ml-auto flex items-center space-x-2">
                       <Link
                         href={post?.sourceCode}
                         target="_blank"
@@ -225,6 +240,20 @@ export function Projects({ showAll = false }: ProjectsProps) {
             </button>
 
             <div className="p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <Image
+                  className="h-12 w-12 rounded-lg"
+                  src="/sia.jpg"
+                  width={48}
+                  height={48}
+                  alt={selectedProject.author || "Author"}
+                />
+                <div>
+                  <p className="text-sm font-semibold">{selectedProject.author}</p>
+                 
+                </div>
+              </div>
+
               <Image
                 src={selectedProject.image || "/default-project.png"}
                 alt={selectedProject.title}
@@ -233,12 +262,34 @@ export function Projects({ showAll = false }: ProjectsProps) {
                 className="w-full rounded-lg object-cover"
               />
               <div className="mt-6">
-                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
-                  {selectedProject.title}
-                </h2>
-                <p className="mt-2 text-slate-700 dark:text-slate-300">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                    {selectedProject.title}
+                  </h2>
+                  <span className="px-3 py-1 text-sm font-medium bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-100 rounded-full">
+                    {selectedProject.category}
+                  </span>
+                </div>
+                
+                <p className="mt-4 text-slate-700 dark:text-slate-300">
                   {selectedProject.details}
                 </p>
+
+                {selectedProject.technologies && selectedProject.technologies.length > 0 && (
+                  <div className="mt-6">
+                    <h3 className="text-lg font-semibold mb-3 text-slate-900 dark:text-white">Skills Used</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map((tech: string, index: number) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1.5 text-sm font-medium bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-full border border-slate-200 dark:border-slate-700"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 
                 <div className="mt-6 flex gap-4">
                   {selectedProject.sourceCode && (

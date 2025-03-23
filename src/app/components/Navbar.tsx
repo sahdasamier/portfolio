@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export function Navbar() {
@@ -15,9 +16,17 @@ export function Navbar() {
       <div className="max-w-8xl mx-auto">
         <div className="py-4 px-4 sm:px-6 lg:px-8">
           <div className="relative flex items-center">
-            <Link href="/" className="mr-3 flex-none overflow-hidden md:w-auto">
-              <span className="sr-only">Sahda Samier</span>
-              <span className="text-xl font-bold">Sahda Samier</span>
+            <Link href="/" className="mr-3 flex-none overflow-hidden md:w-auto flex items-center space-x-2">
+              <Image
+                src="/logo.svg"
+                alt="Sahda Samier Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
+              <span className="text-xl font-bold bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">
+                Sahda Samier
+              </span>
             </Link>
             <div className="relative hidden md:flex items-center ml-auto">
               <nav className="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">

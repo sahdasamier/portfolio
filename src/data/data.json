@@ -6,7 +6,7 @@
     "image": "Trustclaim.png",
     "details": "Developed a decentralized platform that extracts, verifies, and tracks business document claims, enabling transparent and tamper-proof credential verification through blockchain technology.",
     "liveLink": "https://live.linkedtrust.us/feed",
-    "author": "Sahda Samier",
+    "author": "Sia.Samier",
     "sourceCode": "https://github.com/Whats-Cookin/trust_claim",
     "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
     "technologies": ["TypeScript", "React", "MUI", "Node.js", "Express.js"]
@@ -17,7 +17,7 @@
     "image": "MagdyYacob.png",
     "details": "Contributed to building a hospital management system that streamlines patient registration, appointment scheduling, and healthcare administration for improved efficiency.",
     "liveLink": "https://www.myf-egypt.org/donation/",
-    "author": "Sahda Samier",
+    "author": "Sia.Samier",
     "sourceCode": "https://github.com/AHC-APPS/observership/",
     "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
     "technologies": ["TypeScript", "Next.js", "UI/UX Design", "Figma", "MUI"]
@@ -28,7 +28,7 @@
     "image": "Decentralize.png",
     "details": "Developed a decentralized professional network where users can create profiles, showcase projects, and receive verifiable endorsements without relying on centralized identity providers.",
     "liveLink": "",
-    "author": "Sahda Samier",
+    "author": "Sia.Samier",
     "sourceCode": "https://github.com/Whats-Cookin/decentralized_linkedin",
     "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
     "technologies": ["TypeScript", "React", "MUI","Figma"]
@@ -39,7 +39,7 @@
     "image": "What's Cookin'.png",
     "details": "As a front-end developer, I contributed to the development of this decentralized ecosystem by resolving bugs and implementing new features to enhance the user experience.",
     "liveLink": "https://www.whatscookin.us/",
-    "author": "Sahda Samier",
+    "author": "Sia.Samier",
     "sourceCode": "https://github.com/Whats-Cookin/whats-cookin-v1.1/",
     "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
     "technologies": ["JavaScript", "React", "MUI", "Node.js", "Express.js"]
@@ -50,7 +50,7 @@
     "image": "tic_tac_toe.png",
     "details": "Built a web-based Tic Tac Toe game with real-time multiplayer functionality and an interactive user interface.",
     "liveLink": "https://tic-tac-toe-game-tawny.vercel.app/",
-    "author": "Sahda Samier",
+    "author": "Sia.Samier",
     "sourceCode": "https://github.com/sahdasamier/tic-tac-toe",
     "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
     "technologies": [ "JavaScript", "React" ,"vercel"]
@@ -61,7 +61,7 @@
     "image": "share posts.png",
     "details": "Developed a social media platform where users can create posts, interact with content, and manage their profiles in a user-friendly environment.",
     "liveLink": "https://share-your-plogs.vercel.app/",
-    "author": "Sahda Samier",
+    "author": "Sia.Samier",
     "sourceCode": "https://github.com/sahdasamier/Launching-a-post.git",
     "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
     "technologies": [ "JavaScript", "Redux", "React"]
@@ -72,7 +72,7 @@
     "image": "todolist3.png",
     "details": "Designed and built a to-do list application with task organization features, allowing users to manage completed and pending tasks with a clean and efficient UI.",
     "liveLink": "https://to-control-the-tabs.vercel.app/",
-    "author": "Sahda Samier",
+    "author": "Sia.Samier",
     "sourceCode": "https://github.com/sahdasamier/to-control-the-tabs",
     "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
     "technologies": [ "JavaScript", "React"]
@@ -83,7 +83,7 @@
     "image": "share plogs.png",
     "details": "Developed a blogging platform where users can create, edit, and publish posts with a modern and intuitive design.",
     "liveLink": "https://to-do-blog.vercel.app/",
-    "author": "Sahda Samier",
+    "author": "Sia.Samier",
     "sourceCode": "https://github.com/sahdasamier/TO-DO-BLOG.git",
     "avatar": "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
     "technologies": ["JavaScript", "React"]

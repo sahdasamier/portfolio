@@ -12,7 +12,7 @@ export interface Project {
   sourceCode: string;
   liveLink: string;
   image: string;
-  tags?: string[];
+  technologies?: string[];
 }
 
 export async function getProjects(): Promise<{ project: Project[] }> {
@@ -41,6 +41,7 @@ export async function getProjects(): Promise<{ project: Project[] }> {
         sourceCode: data.sourceCode || "",
         liveLink: data.liveLink || "",
         image: data.image || "",
+        technologies: data.technologies || [],
       } as Project;
     });
     
@@ -76,6 +77,7 @@ export async function getProject(id: string): Promise<Project | null> {
       sourceCode: data.sourceCode || "",
       liveLink: data.liveLink || "",
       image: data.image || "",
+      technologies: data.technologies || [],
     };
   } catch (error) {
     console.error("Error fetching project from Firestore:", error);
