@@ -45,7 +45,10 @@ export function ContactUs() {
               Love to hear from you
             </p>
             <p className="mx-auto max-w-4xl text-center text-base  md:text-xl columns-1">
-            Don’t hesitate to drop me a message — I’m always open to new ideas, opportunities, and meaningful conversations
+              I think it's great that you're open to hearing from others!
+              Sharing thoughts fosters connection and creativity. Whether it's a
+              deep insight, casual chat, or random idea, communication builds
+              understanding.
             </p>
           </div>
           <div className="mx-auto max-w-7xl">
@@ -57,18 +60,19 @@ export function ContactUs() {
                     Get in touch
                   </p>
 
-                 
-                  <div className="space-y-6 mt-7">
-                    <div className="flex text-sm  mt-9 font-medium leading-none  peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                      <MdEmail className="mr-4" /> 
-                      Email: sahdasamier013@gmail.com
+                  <p className="mt-4 text-lg ">
+                    Our friendly team would love to hear from you.
+                  </p>
+                  <div className="space-y-2 mt-3">
+                    <div className="flex text-sm font-medium leading-none  peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      <MdEmail className="mr-2" /> Email: sahdasamier013@gmail.com
                     </div>
-                    <div className="flex text-sm mt-9 font-medium leading-none  peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                      <FaPhone className="mr-4" />
+                    <div className="flex text-sm font-medium leading-none  peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      <FaPhone className="mr-2" />
                       Number: +2011472999675
                     </div>
-                    <div className="flex text-sm mt-9 font-medium leading-none  peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                      <FaLocationDot className="mr-4" />
+                    <div className="flex text-sm font-medium leading-none  peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      <FaLocationDot className="mr-2" />
                       Location: Aswan, Egypt
                     </div>
                   </div>
