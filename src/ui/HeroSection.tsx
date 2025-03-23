@@ -17,6 +17,8 @@ import { OrbitingCircles } from "@/components/ui/orbiting-circles";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { SparklesText } from "@/components/ui/sparkles-text";
 import { Spotlight } from "@/components/ui/spotlight";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import { Meteors } from "@/components/ui/meteors";
 import Link from "next/link";
 import { MdDownload } from "react-icons/md";
 
@@ -33,6 +35,8 @@ const words = [
 export function HeroSection() {
   return (
     <div className="relative w-full lg:py-20 lg:pt-32 pt-10 bg-slate-50 dark:bg-[#020617] antialiased overflow-hidden transition-colors duration-300">
+      <BackgroundBeams />
+      <Meteors number={30} />
       <div className="z-0 dark:flex hidden">
         <Spotlight
           className="-top-32 left-0 md:left-80 md:-top-20 -z-0"
@@ -46,7 +50,7 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="mx-auto max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-7xl lg:px-8 relative z-10">
         <div className="flex lg:flex-row flex-col justify-center px-4 py-10 lg:px-6">
           <div className="flex flex-col justify-center px-4 py-10 lg:z-40">
             <div className="mt-2 flex max-w-max items-center space-x-2 rounded-full border border-slate-200 dark:border-slate-800 p-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">

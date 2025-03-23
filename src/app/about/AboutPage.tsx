@@ -2,13 +2,15 @@
 
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import { Meteors } from "@/components/ui/meteors";
 import Image from 'next/image';
 import Link from 'next/link';
 
 export function AboutPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 py-24">
-      <div className="container mx-auto px-4">
+    <div className="relative flex flex-col-reverse rounded-xl py-16 my-20 pt-20 lg:pt-0 lg:flex-col lg:pb-0">
+      <div className="container mx-auto px-4 py-24 relative z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold text-center mb-8 text-slate-900 dark:text-white">
             About Me

@@ -8,7 +8,7 @@ import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { ModeToggle } from '@/components/ui/ModeToggle';
 
-export default function Navbar() {
+export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
@@ -51,7 +51,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="w-full pt-3">
+    <div className="w-full absolute top-0 left-0 right-0 z-50">
       <motion.header
         variants={{
           visible: { y: 0 },
@@ -59,7 +59,7 @@ export default function Navbar() {
         }}
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="sticky lg:top-3 top-0 z-50 w-full rounded-full border border-slate-500/10 flex-none shadow-sm transition-colors duration-500 lg:z-50 dark:border-slate-50/[0.06] bg-white/95 backdrop-blur-2xl supports-backdrop-blur:bg-white/60 dark:bg-slate-900/90"
+        className="absolute lg:top-3 top-3 left-0 right-0 mx-auto w-full rounded-full border border-slate-500/10 flex-none shadow-md transition-colors duration-500 lg:z-50 dark:border-slate-50/[0.06] bg-white/95 backdrop-blur-2xl supports-backdrop-blur:bg-white/60 dark:bg-slate-900/90"
       >
         <div className="relative w-full">
           <div className="w-full flex items-center justify-between px-6 py-4">
@@ -145,4 +145,4 @@ export default function Navbar() {
       </motion.header>
     </div>
   );
-} 
+}

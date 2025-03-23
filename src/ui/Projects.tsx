@@ -17,6 +17,7 @@ import { Meteors } from "@/components/ui/meteors";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { format } from "date-fns";
 import ShineBorder from "@/components/ui/shine-border";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 interface ProjectsProps {
   showAll?: boolean;
@@ -68,7 +69,7 @@ export function Projects({ showAll = false }: ProjectsProps) {
   const displayedProjects = showAll ? sortedProjects : sortedProjects.slice(0, 6);
 
   return (
-    <div className="relative flex flex-col-reverse rounded-xl py-16 my-20 pt-20 lg:dark:bg-slate-900 lg:bg-slate-50 lg:pt-0 lg:flex-col lg:pb-0">
+    <div className="relative flex flex-col-reverse rounded-xl py-16 my-20 pt-20 lg:dark:bg-[#020617] lg:bg-slate-50 lg:pt-0 lg:flex-col lg:pb-0">
       <BackgroundBeams />
       <ScrollProgress className="top-[0px]" />
       <Meteors number={30} />
@@ -217,7 +218,11 @@ export function Projects({ showAll = false }: ProjectsProps) {
         {!showAll && sortedProjects.length > 6 && (
           <div className="flex justify-center items-center text-center mt-8">
             <Link href="/projects">
-              <RainbowButton>See More Projects</RainbowButton>
+              <ShimmerButton className="bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:text-white dark:hover:bg-indigo-600">
+                <span className="whitespace-pre-wrap flex items-center text-center text-sm font-medium leading-none tracking-tight lg:text-base">
+                  See More Projects
+                </span>
+              </ShimmerButton>
             </Link>
           </div>
         )}
