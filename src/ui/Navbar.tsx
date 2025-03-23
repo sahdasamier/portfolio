@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Logo } from '@/app/components/Logo';
 
 interface MenuItem {
   name: string;
@@ -49,6 +50,10 @@ export function Navbar() {
     }
   });
 
+  const isActive = (path: string) => {
+    return pathname === path;
+  };
+
   return (
     <motion.header
       variants={{
@@ -62,16 +67,7 @@ export function Navbar() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold">
-            <img
-              src="/logo.svg"
-              alt="logo"
-              className="h-20 w-20 brightness-125 contrast-125"
-              style={{
-                filter: "drop-shadow(0 0 4px rgba(255, 255, 255, 0.5))",
-                maxWidth: "100%",
-                height: "auto",
-              }}
-            />
+            <Logo size={32} className="text-slate-900 dark:text-white" />
           </Link>
           <div className="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => (
