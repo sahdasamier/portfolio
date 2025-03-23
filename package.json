@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf .next out",
-    "deploy": "yarn clean && yarn build && firebase deploy"
+    "deploy": "yarn clean && yarn build && firebase deploy",
+    "generate-favicon": "node scripts/generate-favicon.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
