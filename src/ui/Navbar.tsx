@@ -1,11 +1,11 @@
 "use client";
 import { ModeToggle } from "@/components/ui/ModeToggle";
+import { Logo } from "@/components/Logo";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Logo } from '@/app/components/Logo';
 
 interface MenuItem {
   name: string;
@@ -67,7 +67,7 @@ export function Navbar() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold">
-            <Logo size={32} className="text-slate-900 dark:text-white" />
+            <Logo size={80} />
           </Link>
           <div className="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => (

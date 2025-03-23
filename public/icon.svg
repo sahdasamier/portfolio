@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="brightnessContrast">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.25" intercept="0"/>
+        <feFuncG type="linear" slope="1.25" intercept="0"/>
+        <feFuncB type="linear" slope="1.25" intercept="0"/>
+      </feComponentTransfer>
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.25"/>
+        <feFuncG type="linear" slope="1.25"/>
+        <feFuncB type="linear" slope="1.25"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+  <g filter="url(#brightnessContrast) url(#glow)">
+    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-weight="bold" font-size="300" fill="#4F46E5">
+      S
+    </text>
+  </g>
+</svg> 

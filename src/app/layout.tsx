@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./components/Providers";
@@ -15,9 +15,12 @@ export const metadata: Metadata = {
     shortcut: '/icon.svg',
     apple: '/icon.svg',
   },
-  manifest: '/manifest.json',
+};
+
+export const viewport: Viewport = {
   themeColor: '#ffffff',
-  viewport: 'width=device-width, initial-scale=1',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -27,12 +30,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="shortcut icon" href="/icon.svg" type="image/svg+xml" />
-        <meta name="theme-color" content="#ffffff" />
-      </head>
       <body className={inter.className}>
         <Providers>
           <div className="min-h-screen flex flex-col">
