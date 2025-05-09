@@ -48,22 +48,10 @@ export function Projects({ showAll = false }: ProjectsProps) {
     );
   }
 
-  // Sort projects based on title to match migration file order
-  const projectOrder = [
-    "What's Cookin'",
-    "Linked trust",
-    "Magdi Yacoub Heart Foundation",
-    "Decentralized_linkedin",
-    "Tic Tac Toe",
-    "In Symphony",
-    "Task Canvas: Your Daily Masterpiece",
-    "Quill Quotient"
-  ];
-
   const sortedProjects = data?.project?.sort((a: any, b: any) => {
-    const indexA = projectOrder.indexOf(a.title);
-    const indexB = projectOrder.indexOf(b.title);
-    return indexA - indexB;
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+    return dateA.getTime() - dateB.getTime();
   }) || [];
 
   const displayedProjects = showAll ? sortedProjects : sortedProjects.slice(0, 6);
