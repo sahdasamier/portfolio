@@ -20,7 +20,7 @@ const fallbackProjects: Project[] = [
   {
     id: "1",
     title: "Linked Trust - A Decentralized Opinion Platform",
-    details: "Developed a decentralized platform that extracts, verifies, and tracks business document claims, enabling transparent and tamper-proof credential verification through blockchain technology.",
+    details: "💻 Front-End Development & UI/UX DesignLed the design and implementation of intuitive user interfaces for the TrustClaim platform using React.js and Material-UI, enhancing user engagement and navigation efficiency. Collaborated closely with UX designers to translate complex requirements into responsive, accessible, and visually appealing web components.🔧 Back-End Engineering & System ArchitectureSpearheaded the backend development of the TrustClaim platform utilizing Node.js and Prisma, ensuring robust data management and seamless API integrations. Implemented secure authentication and authorization mechanisms, safeguarding user data and maintaining system integrity. 🌐 Web3 & Decentralized Application Development Played a pivotal role in the LinkedClaims project, advancing Web3 technologies through the integration of Solid Server and Google SDK, promoting secure and decentralized data management. Developed and deployed decentralized applications (dApps), enhancing user privacy and data ownership in alignment with Web3 principles.",
     category: "Linked Trust",
     author: "Sahda Samier",
     avatar: "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
@@ -29,6 +29,71 @@ const fallbackProjects: Project[] = [
     liveLink: "https://live.linkedtrust.us/feed",
     image: "Trustclaim.png",
     technologies: ["TypeScript", "React", "MUI", "Node.js", "Express.js"]
+  },
+  {
+    id: "2",
+    title: "What's Cookin' - Recipe Platform",
+    details: "A comprehensive recipe and cooking platform allowing users to discover, save, and share recipes with friends and family.",
+    category: "Web Application",
+    author: "Sahda Samier",
+    avatar: "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    createdAt: "2023-02-15T10:30:00.000Z",
+    sourceCode: "https://github.com/sahdasamier/whatscookin",
+    liveLink: "https://whatscookin.vercel.app",
+    image: "whatscookin.png",
+    technologies: ["Next.js", "React", "Tailwind CSS", "Firebase"]
+  },
+  {
+    id: "3",
+    title: "Magdi Yacoub Heart Foundation",
+    details: "Developed the website for Magdi Yacoub Heart Foundation, focusing on accessibility and donation integration.",
+    category: "Non-profit",
+    author: "Sahda Samier",
+    avatar: "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    createdAt: "2023-01-10T14:45:00.000Z",
+    sourceCode: "https://github.com/sahdasamier/magdi-yacoub",
+    liveLink: "https://magdiyacoub.org",
+    image: "magdiyacoub.png",
+    technologies: ["JavaScript", "React", "CSS", "Stripe"]
+  },
+  {
+    id: "4", 
+    title: "Task Canvas: Your Daily Masterpiece",
+    details: "A productivity application that transforms task management into a visual canvas, helping users organize and prioritize their daily activities.",
+    category: "Productivity",
+    author: "Sahda Samier",
+    avatar: "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    createdAt: "2022-12-05T09:15:00.000Z",
+    sourceCode: "https://github.com/sahdasamier/task-canvas",
+    liveLink: "https://taskcanvas.vercel.app",
+    image: "taskcanvas.png",
+    technologies: ["React", "TypeScript", "Redux", "SCSS"]
+  },
+  {
+    id: "5",
+    title: "Tic Tac Toe",
+    details: "A modern implementation of the classic Tic Tac Toe game with multiplayer capabilities and customizable themes.",
+    category: "Game",
+    author: "Sahda Samier",
+    avatar: "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    createdAt: "2022-11-20T16:30:00.000Z",
+    sourceCode: "https://github.com/sahdasamier/tic-tac-toe",
+    liveLink: "https://play-tictactoe.vercel.app",
+    image: "tictactoe.png",
+    technologies: ["JavaScript", "HTML", "CSS", "Socket.io"]
+  },
+  {
+    id: "6",
+    title: "In Symphony",
+    details: "A music streaming platform allowing users to discover and listen to music based on their mood and preferences.",
+    category: "Entertainment",
+    author: "Sahda Samier",
+    avatar: "https://github.com/sahdasamier/portfolio/blob/main/public/sia.jpg",
+    createdAt: "2022-10-15T11:20:00.000Z",
+    sourceCode: "https://github.com/sahdasamier/in-symphony",
+    liveLink: "https://insymphony.vercel.app",
+    image: "insymphony.png",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Spotify API"]
   }
 ];
 

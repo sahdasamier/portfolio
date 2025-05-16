@@ -70,7 +70,7 @@ export function HeroSection() {
             </h2>
             <p className="mt-5 text-base font-medium lg:w-4/5 text-slate-800 dark:text-slate-300">
               Welcome to my portfolio! I hope you enjoy your visit. I specialize in
-              Front-End development with React.js
+              Full-stack development with React.js
               and in Back-End development with Node.js. I have worked on various projects, including a Real{" "}
               <span className="text-indigo-600 dark:text-indigo-400">React-based</span> Website
               Design and Development, and more.
